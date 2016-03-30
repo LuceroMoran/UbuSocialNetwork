@@ -37,8 +37,8 @@ welcomeapp.controller('registerController',['$scope','$http',function($scope,$ht
       swal("Ese correo ya existe!")
         $scope.newUser = {};
     }else{
-      swal("Cuenta creada correctamente")
-      window.location ="/"
+      // swal("Cuenta creada correctamente")
+      window.location ="/#/login"
     }
   })
   .error(function(err){
