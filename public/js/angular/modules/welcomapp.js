@@ -17,7 +17,7 @@ welcomeapp.config(function($stateProvider, $urlRouterProvider){
     views:{
       'content' :{
         templateUrl :'templates/signup.html',
-        // controller :'registerController',
+        controller :'loginController',
       }
     }
   });
@@ -47,21 +47,21 @@ welcomeapp.controller('registerController',['$scope','$http',function($scope,$ht
 }
 }]);
 
-//
-// welcomeapp.controller('loginController',['$scope','$http',function($scope,$http){
-// $scope.tryUser ={email:'',password:''}
-// $scope.logear = function(){
-//   $http.post('access',$scope.tryUser)
-//   .success(function(data){
-//     if(data == 404){
-//       swal("Fijate bien en tus datos!")
-//     }else{
-//       window.location = "/my_profile"
-//     }
-//   })
-//   .error(function(){
-//     console.log(500);
-//
-//   })
-// }
-// }]);
+
+welcomeapp.controller('loginController',['$scope','$http',function($scope,$http){
+$scope.tryUser ={email:'',password:''}
+$scope.logear = function(){
+  $http.post('access',$scope.tryUser)
+  .success(function(data){
+    if(data == 404){
+      swal("Fijate bien en tus datos!")
+    }else{
+      swal("Bienvenido")
+    }
+  })
+  .error(function(){
+    console.log(500);
+
+  })
+}
+}]);
