@@ -1,0 +1,90 @@
+body
+  background -webkit-linear-gradient(to right,#64006A, #9D5B00)
+  background -o-linear-gradient(to right,#64006A, #9D5B00)
+  background -moz-linear-gradient(to right,#64006A, #9D5B00)
+  background linear-gradient(to right,#64006A, #9D5B00)
+
+.row
+  .my-logo-container
+    position relative
+    .my-logo
+      position absolute
+      left 60%
+      margin-top 20%
+      webkit-animation login-image 15s linear infinite
+      -moz-animation login-image 15s linear infinite
+      -ms-animation login-image 15s linear infinite
+      animation login-image 15s linear infinite
+      @keyframes "login-image"
+        0%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+        50%
+          -webkit-transform rotateY(360deg)
+          -moz-transform rotateY(360deg)
+          -ms-transform rotateY(360deg)
+          transform rotateY(360deg)
+        100%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+
+      @-moz-keyframes login-image
+        0%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+        50%
+          -webkit-transform rotateY(360deg)
+          -moz-transform rotateY(360deg)
+          -ms-transform rotateY(360deg)
+          transform rotateY(360deg)
+        100%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+
+      @-webkit-keyframes "login-image"
+        0%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+        50%
+          -webkit-transform rotateY(360deg)
+          -moz-transform rotateY(360deg)
+          -ms-transform rotateY(360deg)
+          transform rotateY(360deg)
+        100%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+
+      @-ms-keyframes "login-image"
+        0%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+        50%
+          -webkit-transform rotateY(360deg)
+          -moz-transform rotateY(360deg)
+          -ms-transform rotateY(360deg)
+          transform rotateY(360deg)
+        100%
+          -webkit-transform rotateY(0deg)
+          -moz-transform rotateY(0deg)
+          -ms-transform rotateY(0deg)
+          transform rotateY(0deg)
+
+form
+  .row
+    input
+      color white
+      font-size 1.5em

@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col s12">
+      <form>
+        <div class="row">
+
+          <div class="input-field col s4">
+            <input ng-model="newUser.nombre" type="text" placeholder="Nombre">
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <input ng-model="newUser.email" type="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s4 ">
+            <input type="password"  ng-model="newUser.password"  placeholder="Password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s8 ">
+            <button class="btn waves-effect waves-light" ng-click="enviar()">Registrarse</button>
+            <button class="btn waves-effect waves-light" ui-sref="login">Ya tengo cuenta</button>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+    <div class="my-logo-container">
+      <img  class="my-logo"src="Images/logo.png">
+    </div>
+  </div>
+</div>
