@@ -56,7 +56,7 @@ $scope.logear = function(){
     if(data == 404){
       swal("Fijate bien en tus datos!")
     }else{
-      swal("Bienvenido")
+      window.location ="/my_profile"
     }
   })
   .error(function(){
