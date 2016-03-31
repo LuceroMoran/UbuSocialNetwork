@@ -61,15 +61,15 @@ $user_id = $_SESSION['uid'];
 
 
       <aside class="col-md-3 col-xs-12 col-sm-12" id="aside-1">
-          <section class="jumbotron1">
-            <img src="Images/family.jpg" alt="" class="img-responsive img-rounded"/>
+          <section class="jumbotron1" ng-repeat="info in myinfo">
+            <img ng-src="{{info.profile_cover}}" alt="" class="img-responsive img-rounded cover"/>
 
           </section>
 
           <div class="container-fluid">
             <div class="row">
-              <div align="center">
-                <img src="Images/ed.jpg" alt="" class="img-responsive img-rounded" width="40%"/>
+              <div align="center" ng-repeat="info in myinfo">
+                <img ng-src="{{info.profile_picture}}" alt="" class="img-responsive img-rounded" width="40%"/>
               </div>
             </div>
           </div>
@@ -85,17 +85,17 @@ $user_id = $_SESSION['uid'];
               <caption><h4>Otros contactos</h4></caption>
             </div>
             <div class="row">
-              <a href="https://www.youtube.com/channel/UCMccW8pm7Tv25wWvz3B4Jdg" class="btn btn-block btn-danger active">
+              <a href="#" class="btn btn-block btn-danger active">
                 <span class="glyphicon glyphicon-play"></span> Canal de Youtube
               </a>
             </div>
-            <div class="row">
-              <a href="https://twitter.com/EdLozano24" class="btn btn-block btn-info">
+            <div class="row" ng-repeat="info in myinfo">
+              <a href="{{info.Twitter}}" class="btn btn-block btn-info">
                 <span><img src="Images/twitter-logo.png" alt="1" width="20" height="20"/></span> Twitter
               </a>
             </div>
             <div class="row">
-              <a href="https://www.facebook.com/eddie.lozano.351" class="btn btn-block btn-primary">
+              <a href="#" class="btn btn-block btn-primary">
                 <span><img src="Images/face.jpg" alt="" width="20" height="20" /></span> Facebook
               </a>
             </div>

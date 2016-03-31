@@ -1,7 +1,7 @@
   <div class="media" ng-repeat="new in publicaciones">
         <div class="media-left">
           <a href="perfil.html">
-            <img src="Images/ed3.jpg" class="img-rounded" alt="">
+            <img ng-src="{{new.profile_picture}}" class="img-rounded post-picture" alt="">
           </a>
         </div>
         <div class="media-body" >
@@ -14,14 +14,14 @@
 <br>
       <footer>
         <div class="media1">
-          <div class="media-left">
-            <a href="perfil.html">
-              <img class="media-object img-rounded" src="Images/ed3.jpg" alt="..." >
+          <div class="media-left" ng-repeat="info in myinfo">
+            <a href="#">
+              <img class="media-object img-rounded post-picture" ng-src="{{info.profile_picture}}" alt="..." >
             </a>
           </div>
           <div class="media-body">
             <!-- <h4 class="media-heading"></h4> -->
-          <textarea  ng-model="posttosend.post"name="post" rows="3" cols="80" placeholder="¿Qué estás tramando?"></textarea>
+          <textarea ng-repeat="info in myinfo"  ng-model="posttosend.post"name="post" rows="3" cols="80" placeholder="¿Qué estás tramando {{info.name}}?"></textarea>
           <br>
           <button type="submit" class="btn btn-large btn-info" ng-click="send()">Publicar</button>
         </div>

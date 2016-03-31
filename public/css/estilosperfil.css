@@ -41,3 +41,13 @@ aside.aside2{
 img{
   style: rou
 }
+
+.cover{
+  background: #64006A;
+  width: 320px;
+  height: 180px;
+}
+
+.post-picture{
+  height: 70px;
+}

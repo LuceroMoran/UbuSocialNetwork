@@ -23,9 +23,13 @@ class RegisterController extends Controller
           'password' => $password,
           'email' => $email
         ]);
+        $obtenerid = DB::table('users')->select('id')->where('email','=',$email)->get();
+        $userid = $obtenerid[0]->id;
+        $initdata = DB::table('user-data')->insert(
+        ['user_id' => $userid]
+        );
             $codigo = 0;
       }
-
       return $codigo;
     }
 }
