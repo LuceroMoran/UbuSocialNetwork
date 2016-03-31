@@ -19,14 +19,15 @@ userperfilapp.config(function($stateProvider, $urlRouterProvider){
 userperfilapp.controller('MyProfileMainCtrl',['$scope','$http',function($scope,$http){
   $scope.firstTosend = {id : user_id};
   angular.element(document).ready(function () {
-    // $http.post('getmypost',$scope.firstTosend)
-    // .success(function(data){
-    //   console.log(data);
-    //   $scope.publicaciones = data
-    // })
-    // .error(function(err){
-    //   console.log(500);
-    // })
+    $http.post('getmyinfo',$scope.firstTosend)
+    .success(function(data){
+    // console.log(data);
+    console.log(200);
+    $scope.myinfo = data
+    })
+    .error(function(err){
+      console.log(500);
+    })
  });
 }]);
 
@@ -38,7 +39,7 @@ $scope.send = function(){
   $http.post('sendapost',$scope.posttosend)
   .success(function(data){
     console.log("ok");
-    console.log(data);
+    // console.log(data);
     $scope.posttosend.post = ''
   })
   .error(function(err){
@@ -49,7 +50,7 @@ $scope.send = function(){
 angular.element(document).ready(function () {
   $http.post('getmypost',$scope.firstTosend)
   .success(function(data){
-    console.log(data);
+    // console.log(data);
     $scope.publicaciones = data
   })
   .error(function(err){

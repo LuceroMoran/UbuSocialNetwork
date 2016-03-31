@@ -18,6 +18,7 @@ Route::post('sendregister','RegisterController@register');
 Route::post('access','LoginController@login');
 Route::post('sendapost','PostsController@post_a_post');
 Route::post('getmypost','PostsController@get_my_post');
+Route::post('getmyinfo','InfoController@get_my_info');
 
 
 

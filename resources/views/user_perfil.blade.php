@@ -21,7 +21,7 @@ $user_id = $_SESSION['uid'];
 </head>
 <body ng-app="userperfilapp">
 
-    <div ng-controller="MyProfileMainCtrl">
+    <div ng-controller="MyProfileMainCtrl" >
       <header>
         <nav class="navbar navbar-fixed-top navbar-default">
           <div class="container-fluid">
@@ -56,9 +56,9 @@ $user_id = $_SESSION['uid'];
               </ul>
             </div>
           </div>
-        </div>
       </nav>
       </header>
+
 
       <aside class="col-md-3 col-xs-12 col-sm-12" id="aside-1">
           <section class="jumbotron1">
@@ -74,9 +74,9 @@ $user_id = $_SESSION['uid'];
             </div>
           </div>
 
-          <section clas="jumbotron2">
+          <section clas="jumbotron2" ng-repeat="info in myinfo">
             <div class="container">
-             <h3 class="user_name">Eddie Lozano</h3>
+             <h3 class="user_name">{{info.name}}</h3>
             </div>
           </section>
 
@@ -102,6 +102,7 @@ $user_id = $_SESSION['uid'];
           </div>
         </aside>
     </div>
+
 
 
 
