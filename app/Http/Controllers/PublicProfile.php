@@ -87,4 +87,18 @@ class PublicProfile extends Controller
    	->get();
    	return $getfollowers;
    }
+
+   public function post_to_public(){
+    session_start();
+      $user_id = $_SESSION['uid'];
+      $profile = $_SESSION['publicprofileid'];
+      $post = Request::input('post');
+
+      $insertpost = DB::table('posts')->insert([
+        'id_user' => $user_id,
+        'mencion' => $profile,
+        'text' => $post,
+        ]);
+      return 0;
+   }
 }

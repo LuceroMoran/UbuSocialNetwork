@@ -24,6 +24,7 @@ publicperfilapp.config(function($stateProvider, $urlRouterProvider){
 });
 
 publicperfilapp.controller('StartPublicController',['$scope','$http',function($scope,$http){
+  $scope.posttosend = {post : ''};
 	$scope.follow = function(){
 		$http.post('publicprofile/follow',{})
 		.success(function(data){
@@ -33,6 +34,17 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
 			console.log(500);
 		})
 	}
+
+  $scope.send = function(){
+    $http.post('publicprofile/post',$scope.posttosend)
+    .success(function(data){
+      console.log(data);
+      $scope.posttosend.post = '';
+    })
+    .error(function(err){
+      console.log(500)
+    })
+  }
 
 angular.element(document).ready(function () {
   $http.post('publicprofile/getposts',{})
