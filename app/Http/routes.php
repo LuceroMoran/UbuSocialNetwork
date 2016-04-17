@@ -30,6 +30,7 @@ Route::post('publicprofile/getposts','PublicProfile@get_public_post');
 Route::post('publicprofile/getinfo','PublicProfile@get_public_info');
 Route::post('publicprofile/follow','PublicProfile@do_follow');
 Route::post('publicprofile/follow_validate','PublicProfile@follow_validate');
+Route::post('publicprofile/getfollowers','PublicProfile@get_followers');
 
 
 

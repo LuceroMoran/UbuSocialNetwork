@@ -23,8 +23,9 @@ class PostsController extends Controller
     $getpost = DB::table('posts')
     ->join('users','posts.id_user','=','users.id')
     ->join('user-data','users.id','=','user-data.user_id')
-    ->select('posts.id_user','posts.created_at','users.name','posts.text','user-data.profile_picture')
-    ->where('posts.id_user','=',$userid)->orderBy('posts.created_at','desc')->take(4)->get();
+    ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture')
+    ->where('posts.id_user','=',$userid)->orWhere('posts.mencion', '=',$userid)
+    ->orderBy('posts.created_at','desc')->take(4)->get();
     return $getpost;
     }
 }

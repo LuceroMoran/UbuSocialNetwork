@@ -26,8 +26,9 @@ class PublicProfile extends Controller
     $getpost = DB::table('posts')
     ->join('users','posts.id_user','=','users.id')
     ->join('user-data','users.id','=','user-data.user_id')
-    ->select('posts.id_user','posts.created_at','users.name','posts.text','user-data.profile_picture')
-    ->where('posts.id_user','=',$profile)->orderBy('posts.created_at','desc')->take(10)->get();
+    ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture')
+    ->where('posts.id_user','=',$profile)->orWhere('posts.mencion', '=',$profile)
+    ->orderBy('posts.created_at','desc')->take(10)->get();
     return $getpost;
     }
 
@@ -65,11 +66,25 @@ class PublicProfile extends Controller
     	->where('suscripcion_id','=',$profile)
     	->get();
 
-    	if($validate != null){
+    	if($validate != null or $user_id == $profile){
     		$codigo = 208;
     	}
 
     	return $codigo;
 
     }
+
+   public function get_followers(){
+   	session_start();
+   	$profile = $_SESSION['publicprofileid'];
+   	$getfollowers = DB::table('suscribciones')
+   	->join('users','suscribciones.suscriptor_id','=','users.id')
+   	->join('user-data','users.id','=','user-data.user_id')
+   	->select('users.id','users.name','users.email','suscribciones.suscriptor_id','suscribciones.suscripcion_id',
+   		'user-data.profile_picture'
+   		)
+   	->where('suscribciones.suscripcion_id','=',$profile)
+   	->get();
+   	return $getfollowers;
+   }
 }

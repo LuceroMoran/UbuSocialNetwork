@@ -60,8 +60,8 @@
 
     <div class="container-fluid" id="main">
       <ul class="nav nav-tabs nav-justified">
-        <li role="presentation" class="active"><a href="#posts">Posts</a></li>
-        <li role="presentation"><a href="publicoseguidores.html">Seguidores</a></li>
+        <li role="presentation" ui-sref="public_post"><a href="#posts">Posts</a></li>
+        <li role="presentation" ui-sref="followers"><a href="publicoseguidores.html">Seguidores</a></li>
       </ul>
     </div>
   </div>
