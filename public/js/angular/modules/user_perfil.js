@@ -48,14 +48,23 @@ $scope.send = function(){
 };
 
 angular.element(document).ready(function () {
-  $http.post('getmypost',$scope.firstTosend)
+
+$scope.getdo = function(){
+  setInterval(function(){
+    $http.post('getmypost',$scope.firstTosend)
   .success(function(data){
-    console.log(data);
+    // console.log(data);
     $scope.publicaciones = data
   })
   .error(function(err){
     console.log(500);
   })
+  }, 1000)
+}
+
+$scope.getdo();
+
+
 
   $http.post('getmyinfo',$scope.firstTosend)
   .success(function(data){

@@ -46,11 +46,12 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
     })
   }
 
+// $scope.publicaciones = {name : '', text : '' , profile_picture : ''}
 angular.element(document).ready(function () {
   $http.post('publicprofile/getposts',{})
   .success(function(data){
-   
-    $scope.publicaciones = data
+    console.log(data)
+    $scope.publicaciones = data.postinfo;
   })
   .error(function(err){
     console.log(500);

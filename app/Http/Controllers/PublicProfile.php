@@ -22,14 +22,32 @@ class PublicProfile extends Controller
 
 	public function get_public_post(){
 	session_start();
+  $data = array(
+    "postinfo" => [],
+    // "mencioninfo" => [],
+    );
+
 	$profile = $_SESSION['publicprofileid'];
     $getpost = DB::table('posts')
     ->join('users','posts.id_user','=','users.id')
     ->join('user-data','users.id','=','user-data.user_id')
-    ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture')
+    ->join('users as MU','posts.mencion','=','MU.id')
+    ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture',
+      'MU.name as mname')
     ->where('posts.id_user','=',$profile)->orWhere('posts.mencion', '=',$profile)
     ->orderBy('posts.created_at','desc')->take(10)->get();
-    return $getpost;
+    $data['postinfo'] = $getpost;
+
+
+
+/*    $getpostmencion = DB::table('posts')
+    ->join('users','posts.mencion','=','users.id')
+    ->select('posts.id_user','posts.mencion','users.name')
+    ->where('posts.id_user','=',$profile)->orWhere('posts.mencion', '=',$profile)
+    ->orderBy('posts.created_at','desc')->take(10)->get();
+    $data['mencioninfo'] = $getpostmencion;*/
+
+    return $data;
     }
 
     public function get_public_info(){
