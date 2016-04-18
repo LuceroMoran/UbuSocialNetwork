@@ -46,7 +46,7 @@
   </nav>
   </header>
   <div class="container col-md-9">
-  <div ng-controller="StartPublicController">     
+  <div ng-controller="StartPublicController">
     <div align="center"  ng-repeat="info in myinfo">
       <img ng-src="{{info.profile_picture}}" alt="" class="img-responsive img-rounded post-picture" width="40%"/>
     </div>
@@ -69,7 +69,7 @@
 
      <div class="vistas-wrapper" ui-view="content"></div>
   </div>
- 
+
 
   <script src="js/angular/angular.min.js"></script>
   <script src="js/angular/angular-ui-router.min.js"></script>

@@ -46,6 +46,17 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
     })
   }
 
+  $scope.sendlike = function(){
+    $http.post('publicprofile/like',$scope.addLike)
+    .success(function(data){
+      console.log(data);
+      $scope.addLike.post = '';
+    })
+    .error(function(err){
+      console.log(500)
+    })
+  }
+
 // $scope.publicaciones = {name : '', text : '' , profile_picture : ''}
 angular.element(document).ready(function () {
   $http.post('publicprofile/getposts',{})
@@ -74,7 +85,7 @@ angular.element(document).ready(function () {
 	}else{
 		$scope.suscrito = false;
 	}
-	
+
 })
 .error(function(err){
 	console.log(500);
