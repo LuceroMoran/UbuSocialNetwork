@@ -59,7 +59,7 @@ class PublicProfile extends Controller
     public function addLike($post_id){
       session_start();
       $user_id = $_SESSION['uid'];
-			$post_id = Request
+			$post_id = Request::input('psid');
       $like = DB::table('posts')->insert(
       ['post_id' =>$post_id,'user_id' => $user_id]
       );

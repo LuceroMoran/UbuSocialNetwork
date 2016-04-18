@@ -18,7 +18,16 @@
 
        <div class="media" ng-repeat="new in publicaciones">
         <div class="media-left">
-         <!--<button type="submit" class="btn btn-large btn-warning" ng-model="addLike.post" ng-click="sendlike()">like</button>-->
+          <!--<?php
+          requiere once 'PublicProfile.php'
+          $post = getPosts();
+          foreach ($post as $key => $val) {
+	         echo "<tr>";
+	         echo "<td><button onclick='sendLike({$val->id})'>Like</button></td>";
+	         echo "</tr>";
+          }
+           ?>--> <!--Op 1-->
+         <!--<button type="submit" class="btn btn-large btn-warning" ng-model="addLike.post" ng-click="sendlike({{psid}})">like</button>--> <!--Op 2-->
           <a href="perfil.html">
             <img ng-src="{{new.profile_picture}}" class="img-rounded post-picture" alt="">
           </a>
