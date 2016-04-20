@@ -33,7 +33,7 @@ class PublicProfile extends Controller
     ->join('users','posts.id_user','=','users.id')
     ->join('user-data','users.id','=','user-data.user_id')
     ->join('users as MU','posts.mencion','=','MU.id')
-    ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture',
+    ->select('posts.id_user','posts.mencion','users.name','posts.text', 'posts.id','user-data.profile_picture',
       'MU.name as mname')
     ->where('posts.id_user','=',$profile)->orWhere('posts.mencion', '=',$profile)
     ->orderBy('posts.created_at','desc')->take(10)->get();
@@ -56,15 +56,7 @@ class PublicProfile extends Controller
     return $data;
     }
 
-    public function addLike($post_id){
-      session_start();
-      $user_id = $_SESSION['uid'];
-			$post_id = Request::input('psid');
-      $like = DB::table('posts')->insert(
-      ['post_id' =>$post_id,'user_id' => $user_id]
-      );
-      return 201;
-    }
+
 
     public function get_public_info(){
     	session_start();
@@ -135,4 +127,15 @@ class PublicProfile extends Controller
         ]);
       return 0;
    }
+
+	 public function addLike(){
+		 session_start();
+		 $user_id = $_SESSION['uid'];
+		 $post_id = Request::input('pid');
+		 $like = DB::table('likes')->insert([
+			 'post_id' =>$post_id,
+			 'user_id' => $user_id,
+		 ]);
+		 return 201;
+	 }
 }

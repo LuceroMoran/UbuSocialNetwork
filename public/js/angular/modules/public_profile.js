@@ -25,6 +25,7 @@ publicperfilapp.config(function($stateProvider, $urlRouterProvider){
 
 publicperfilapp.controller('StartPublicController',['$scope','$http',function($scope,$http){
   $scope.posttosend = {post : ''};
+  $scope.addLike = {pid : ''};
 	$scope.follow = function(){
 		$http.post('publicprofile/follow',{})
 		.success(function(data){
@@ -50,7 +51,7 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
     $http.post('publicprofile/like',$scope.addLike)
     .success(function(data){
       console.log(data);
-      $scope.addLike.post = '';
+      $scope.addLike.pid = '';
     })
     .error(function(err){
       console.log(500)
@@ -63,6 +64,15 @@ angular.element(document).ready(function () {
   .success(function(data){
     console.log(data)
     $scope.publicaciones = data.postinfo;
+  })
+  .error(function(err){
+    console.log(500);
+  })
+
+  $http.post('publicprofile/getposts',{})
+  .success(function(data){
+    console.log(data)
+    $scope.post_id = data.posts_ids;
   })
   .error(function(err){
     console.log(500);
