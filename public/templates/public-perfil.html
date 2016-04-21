@@ -1,5 +1,4 @@
-
-
+<!--No mostrar proceso de carga--><!--Spotify Widget integration--><!--Codepad Widget-->
     <br>
 
          <div class="media1">
@@ -24,11 +23,11 @@
           </a>
         </div>
         <div class="media-body" >
-          <h4 class="media-heading">{{new.name}} : <span ng-if="new.name != new.mname">{{new.mname}} </span></h4>
+          <h4 class="media-heading">{{new.name}} <span ng-if="new.name != new.mname">: {{new.mname}} </span></h4>
           <p>
             {{new.text}}
           </p>
-          <button type="submit" class="btn btn-large btn-warning" ng-model="addLike.post" ng-click="sendlike('{{new.id}}')">like</button>
+          <button type="submit" class="btn btn-large btn-warning" ng-model="addLike.pid" ng-click="sendlike(new.id)">like</button>
         </div>
   </div>
 

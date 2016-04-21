@@ -48,10 +48,10 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
   }
 
   $scope.sendlike = function(id){
+    $scope.addLike.pid = id;
     $http.post('publicprofile/like',$scope.addLike)
     .success(function(data){
       console.log(data);
-      $scope.addLike.pid = 'id';
     })
     .error(function(err){
       console.log(500)
