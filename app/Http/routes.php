@@ -32,7 +32,7 @@ Route::post('publicprofile/follow','PublicProfile@do_follow');
 Route::post('publicprofile/follow_validate','PublicProfile@follow_validate');
 Route::post('publicprofile/getfollowers','PublicProfile@get_followers');
 Route::post('publicprofile/post','PublicProfile@post_to_public');
-
+Route::post('publicprofile/like','PublicProfile@addLike');
 
 
 

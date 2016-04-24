@@ -1,11 +1,11 @@
-
-
+<!--No mostrar proceso de carga--><!--Spotify Widget integration--><!--Codepad Widget-->
     <br>
 
          <div class="media1">
           <div class="media-left" ng-repeat="info in myinfo">
             <a href="#">
-              <img class="media-object img-rounded post-picture" ng-src="{{info.profile_picture}}" alt="..." >
+              <img class="media-objec
+              t img-rounded post-picture" ng-src="{{info.profile_picture}}" alt="..." >
             </a>
           </div>
           <div class="media-body">
@@ -17,20 +17,18 @@
       <br>
 
        <div class="media" ng-repeat="new in publicaciones">
-        <div class="media-left">
+         <div class="media-left">
           <a href="perfil.html">
             <img ng-src="{{new.profile_picture}}" class="img-rounded post-picture" alt="">
           </a>
         </div>
         <div class="media-body" >
-          <h4 class="media-heading">{{new.name}} : <span ng-if="new.name != new.mname">{{new.mname}} </span></h4>
+          <h4 class="media-heading">{{new.name}} <span ng-if="new.name != new.mname">: {{new.mname}} </span></h4>
           <p>
             {{new.text}}
           </p>
+          <button type="submit" class="btn btn-large btn-warning" ng-model="addLike.pid" ng-click="sendlike(new.id)">like</button>
         </div>
   </div>
 
 <br>
-
-   
-
