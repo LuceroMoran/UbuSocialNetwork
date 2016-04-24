@@ -39,7 +39,7 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
   $scope.send = function(){
     $http.post('publicprofile/post',$scope.posttosend)
     .success(function(data){
-      console.log(data);
+      // console.log(data);
       $scope.posttosend.post = '';
     })
     .error(function(err){
@@ -51,7 +51,7 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
     $scope.addLike.pid = id;
     $http.post('publicprofile/like',$scope.addLike)
     .success(function(data){
-      console.log(data);
+      // console.log(data);
     })
     .error(function(err){
       console.log(500)
@@ -62,7 +62,7 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
 angular.element(document).ready(function () {
   $http.post('publicprofile/getposts',{})
   .success(function(data){
-    console.log(data)
+    // console.log(data)
     $scope.publicaciones = data.postinfo;
   })
   .error(function(err){
@@ -71,7 +71,8 @@ angular.element(document).ready(function () {
 
   $http.post('publicprofile/getposts',{})
   .success(function(data){
-    console.log(data)
+    // console.log("Post info");
+    // console.log(data)
     $scope.post_id = data.posts_ids;
   })
   .error(function(err){
@@ -89,7 +90,7 @@ angular.element(document).ready(function () {
 
   $http.post('publicprofile/follow_validate',{})
 .success(function(data){
-	console.log(data);
+	// console.log(data);
 	if(data == 208){
 		$scope.suscrito = true;
 	}else{
@@ -115,7 +116,6 @@ publicperfilapp.controller('FollowersController',['$scope','$http',function($sco
 		window.location = "/publicprofile="+email;
 	}
 	angular.element(document).ready(function () {
-		console.log(10101001)
 		$http.post('publicprofile/getfollowers',{})
 		.success(function(data){
 			$scope.followersdata = data;

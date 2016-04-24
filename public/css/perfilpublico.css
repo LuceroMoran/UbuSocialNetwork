@@ -25,3 +25,8 @@ aside.aside2{
   height: 5em;
   width: 5em;
 }
+
+.like{
+  width: 30px;
+  cursor: pointer;
+}

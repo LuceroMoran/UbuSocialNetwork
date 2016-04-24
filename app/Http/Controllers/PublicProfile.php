@@ -25,7 +25,7 @@ class PublicProfile extends Controller
   $data = array(
     "postinfo" => [],
     // "mencioninfo" => [],*
-		"posts_ids" => []
+		"posts_ids" => [],
     );
 
 	$profile = $_SESSION['publicprofileid'];
@@ -34,7 +34,7 @@ class PublicProfile extends Controller
     ->join('user-data','users.id','=','user-data.user_id')
     ->join('users as MU','posts.mencion','=','MU.id')
     ->select('posts.id_user','posts.mencion','users.name','posts.text', 'posts.id','user-data.profile_picture',
-      'MU.name as mname')
+      'MU.name as mname','posts.likes')
     ->where('posts.id_user','=',$profile)->orWhere('posts.mencion', '=',$profile)
     ->orderBy('posts.created_at','desc')->take(10)->get();
 		$getpids = DB::table('posts')
@@ -66,6 +66,7 @@ class PublicProfile extends Controller
       ->select('users.name','users.id','user-data.profile_picture',
       'user-data.profile_cover','user-data.Twitter'
       )->where('users.id','=',$profile)->get();
+
 
      	 return $getinfo;
 
@@ -135,6 +136,11 @@ class PublicProfile extends Controller
 		 $like = DB::table('likes')->insert([
 			 'post_id' =>$post_id,
 			 'user_id' => $user_id,
+		 ]);
+		 $numlikes = DB::table('posts')->select('likes')->where('id','=',$post_id)->get();
+		 $suma  = $numlikes[0]->likes + 1;
+		 $update_likes = DB::table('posts')->where('id','=',$post_id)->update([
+			 'likes' => $suma,
 		 ]);
 		 return 201;
 	 }
