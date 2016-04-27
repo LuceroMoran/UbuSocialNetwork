@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2016 at 07:21 PM
+-- Generation Time: Apr 27, 2016 at 10:47 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -34,8 +34,24 @@ CREATE TABLE `groups` (
   `name` int(11) NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `privacy` tinyint(1) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groups_members`
+--
+
+DROP TABLE IF EXISTS `groups_members`;
+CREATE TABLE `groups_members` (
+  `interaction_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `admin` tinyint(1) NOT NULL,
+  `added_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -56,7 +72,8 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`interaction_id`, `post_id`, `user_id`) VALUES
-(8, 0, 15);
+(17, 21, 15),
+(19, 20, 15);
 
 -- --------------------------------------------------------
 
@@ -122,7 +139,8 @@ INSERT INTO `posts` (`id`, `id_user`, `text`, `mencion`, `created_at`, `updated_
 (20, 13, 'Que narices tio!', 11, '2016-04-17 19:22:44', NULL),
 (21, 11, 'Joder macho ! dejame!', 11, '2016-04-17 19:23:36', NULL),
 (22, 15, 'sup', 15, '2016-04-20 14:26:54', NULL),
-(23, 15, '(◕︵◕)', 11, '2016-04-20 16:42:00', NULL);
+(23, 15, '(◕︵◕)', 11, '2016-04-20 16:42:00', NULL),
+(24, 15, '?¿?¿?¿?¿?¿', 15, '2016-04-21 03:15:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -146,7 +164,8 @@ INSERT INTO `suscribciones` (`id`, `suscriptor_id`, `suscripcion_id`) VALUES
 (5, 13, 12),
 (6, 11, 8),
 (7, 13, 11),
-(8, 13, 10);
+(8, 13, 10),
+(9, 15, 11);
 
 -- --------------------------------------------------------
 
@@ -218,6 +237,12 @@ ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `groups_members`
+--
+ALTER TABLE `groups_members`
+  ADD PRIMARY KEY (`interaction_id`);
+
+--
 -- Indexes for table `likes`
 --
 ALTER TABLE `likes`
@@ -265,20 +290,25 @@ ALTER TABLE `users`
 ALTER TABLE `groups`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `groups_members`
+--
+ALTER TABLE `groups_members`
+  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `suscribciones`
 --
 ALTER TABLE `suscribciones`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `user-data`
 --
