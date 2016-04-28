@@ -33,7 +33,9 @@ Route::post('publicprofile/follow_validate','PublicProfile@follow_validate');
 Route::post('publicprofile/getfollowers','PublicProfile@get_followers');
 Route::post('publicprofile/post','PublicProfile@post_to_public');
 Route::post('publicprofile/like','PublicProfile@addLike');
-
+Route::post('group/create','GroupsController@addGroup');
+Route::post('group/info','GroupsController@getData')
+Route::post('group/new_member','GroupsController@addMember');
 
 
 
