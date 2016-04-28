@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 27, 2016 at 10:47 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Servidor: localhost
+-- Tiempo de generación: 25-04-2016 a las 01:35:11
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,50 +17,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ubu`
+-- Base de datos: `ubu`
 --
-CREATE DATABASE IF NOT EXISTS `ubu` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ubu`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Estructura de tabla para la tabla `groups`
 --
 
-DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` int(11) NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `privacy` tinyint(1) NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups_members`
+-- Estructura de tabla para la tabla `likes`
 --
 
-DROP TABLE IF EXISTS `groups_members`;
-CREATE TABLE `groups_members` (
-  `interaction_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  `member_id` int(11) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
-  `added_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `likes`
---
-
-DROP TABLE IF EXISTS `likes`;
 CREATE TABLE `likes` (
   `interaction_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
@@ -68,27 +48,25 @@ CREATE TABLE `likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `likes`
+-- Volcado de datos para la tabla `likes`
 --
 
 INSERT INTO `likes` (`interaction_id`, `post_id`, `user_id`) VALUES
-(17, 21, 15),
-(19, 20, 15);
+(17, 16, 11);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Estructura de tabla para la tabla `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Volcado de datos para la tabla `migrations`
 --
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
@@ -101,10 +79,9 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Estructura de tabla para la tabla `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -114,41 +91,39 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Estructura de tabla para la tabla `posts`
 --
 
-DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_user` bigint(11) NOT NULL,
   `text` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mencion` bigint(20) DEFAULT '0',
+  `likes` bigint(20) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `posts`
+-- Volcado de datos para la tabla `posts`
 --
 
-INSERT INTO `posts` (`id`, `id_user`, `text`, `mencion`, `created_at`, `updated_at`) VALUES
-(15, 13, 'Madre mia del amor hermoso', 13, '2016-04-17 05:17:44', NULL),
-(16, 13, 'Qué Honduras con tus verduras que tienes a bajas temperaturas?!', 8, '2016-04-17 18:23:52', NULL),
-(17, 13, 'Ah raza!', 13, '2016-04-17 19:11:11', NULL),
-(19, 13, 'Dio mio que pro', 13, '2016-04-17 19:20:12', NULL),
-(20, 13, 'Que narices tio!', 11, '2016-04-17 19:22:44', NULL),
-(21, 11, 'Joder macho ! dejame!', 11, '2016-04-17 19:23:36', NULL),
-(22, 15, 'sup', 15, '2016-04-20 14:26:54', NULL),
-(23, 15, '(◕︵◕)', 11, '2016-04-20 16:42:00', NULL),
-(24, 15, '?¿?¿?¿?¿?¿', 15, '2016-04-21 03:15:44', NULL);
+INSERT INTO `posts` (`id`, `id_user`, `text`, `mencion`, `likes`, `created_at`, `updated_at`) VALUES
+(15, 13, 'Madre mia del amor hermoso', 13, 0, '2016-04-17 05:17:44', NULL),
+(16, 13, 'Qué Honduras con tus verduras que tienes a bajas temperaturas?!', 8, 1, '2016-04-17 18:23:52', NULL),
+(17, 13, 'Ah raza!', 13, 0, '2016-04-17 19:11:11', NULL),
+(19, 13, 'Dio mio que pro', 13, 0, '2016-04-17 19:20:12', NULL),
+(20, 13, 'Que narices tio!', 11, 0, '2016-04-17 19:22:44', NULL),
+(21, 11, 'Joder macho ! dejame!', 11, 0, '2016-04-17 19:23:36', NULL),
+(22, 15, 'sup', 15, 0, '2016-04-20 14:26:54', NULL),
+(23, 15, '(◕︵◕)', 11, 0, '2016-04-20 16:42:00', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `suscribciones`
+-- Estructura de tabla para la tabla `suscribciones`
 --
 
-DROP TABLE IF EXISTS `suscribciones`;
 CREATE TABLE `suscribciones` (
   `id` bigint(20) NOT NULL,
   `suscriptor_id` bigint(20) NOT NULL,
@@ -156,7 +131,7 @@ CREATE TABLE `suscribciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `suscribciones`
+-- Volcado de datos para la tabla `suscribciones`
 --
 
 INSERT INTO `suscribciones` (`id`, `suscriptor_id`, `suscripcion_id`) VALUES
@@ -164,16 +139,14 @@ INSERT INTO `suscribciones` (`id`, `suscriptor_id`, `suscripcion_id`) VALUES
 (5, 13, 12),
 (6, 11, 8),
 (7, 13, 11),
-(8, 13, 10),
-(9, 15, 11);
+(8, 13, 10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user-data`
+-- Estructura de tabla para la tabla `user-data`
 --
 
-DROP TABLE IF EXISTS `user-data`;
 CREATE TABLE `user-data` (
   `id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -184,7 +157,7 @@ CREATE TABLE `user-data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user-data`
+-- Volcado de datos para la tabla `user-data`
 --
 
 INSERT INTO `user-data` (`id`, `user_id`, `profile_picture`, `profile_cover`, `Twitter`, `fav-language`) VALUES
@@ -200,10 +173,9 @@ INSERT INTO `user-data` (`id`, `user_id`, `profile_picture`, `profile_cover`, `T
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -215,7 +187,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -227,95 +199,84 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (15, 'Miguel Mtz', 'miguel_mtz2121@hotmail.com', '3714cc6e9d3193e4f4535ab76ab9d1b6', NULL, NULL, NULL);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `groups`
+-- Indices de la tabla `groups`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `groups_members`
---
-ALTER TABLE `groups_members`
-  ADD PRIMARY KEY (`interaction_id`);
-
---
--- Indexes for table `likes`
+-- Indices de la tabla `likes`
 --
 ALTER TABLE `likes`
   ADD PRIMARY KEY (`interaction_id`);
 
 --
--- Indexes for table `password_resets`
+-- Indices de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
 
 --
--- Indexes for table `posts`
+-- Indices de la tabla `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `suscribciones`
+-- Indices de la tabla `suscribciones`
 --
 ALTER TABLE `suscribciones`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user-data`
+-- Indices de la tabla `user-data`
 --
 ALTER TABLE `user-data`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `groups`
+-- AUTO_INCREMENT de la tabla `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `groups_members`
---
-ALTER TABLE `groups_members`
-  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `likes`
+-- AUTO_INCREMENT de la tabla `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
--- AUTO_INCREMENT for table `suscribciones`
+-- AUTO_INCREMENT de la tabla `suscribciones`
 --
 ALTER TABLE `suscribciones`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `user-data`
+-- AUTO_INCREMENT de la tabla `user-data`
 --
 ALTER TABLE `user-data`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
