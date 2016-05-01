@@ -34,6 +34,7 @@ userperfilapp.controller('MyProfileMainCtrl',['$scope','$http',function($scope,$
 userperfilapp.controller('PostComment',['$scope','$http',function($scope,$http){
 $scope.firstTosend = {id : user_id};
 $scope.posttosend = {post:''}
+  $scope.addLike = {pid : ''};
 $scope.send = function(){
   // console.log($scope.posttosend);
   $http.post('sendapost',$scope.posttosend)
@@ -46,7 +47,18 @@ $scope.send = function(){
     console.log(500);
   })
 };
+$scope.sendlike = function(id){
+  $scope.addLike.pid = id;
+  $http.post('publicprofile/like',$scope.addLike)
+  .success(function(data){
+    // console.log(data);
+  })
+  .error(function(err){
+    console.log(500)
+  })
 
+  console.log($scope.addLike);
+}
 angular.element(document).ready(function () {
 
 $scope.getdo = function(){

@@ -25,7 +25,7 @@ class PostsController extends Controller
     ->join('user-data','users.id','=','user-data.user_id')
     ->join('users as MU','posts.mencion','=','MU.id')
     ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture',
-      'MU.name as mname')
+      'MU.name as mname','posts.id')
     ->where('posts.id_user','=',$userid)->orWhere('posts.mencion', '=',$userid)
     ->orderBy('posts.created_at','desc')->take(4)->get();
     return $getpost;

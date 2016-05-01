@@ -51,3 +51,7 @@ img{
 .post-picture{
   height: 70px;
 }
+.like{
+  width: 30px;
+  cursor: pointer;
+}
