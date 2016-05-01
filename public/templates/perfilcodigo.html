@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/perfilcodigo.css">
+</head>
+<body>
+
+    <div class="main container-fluid col-md-7 col-xs-12 col-sm-12">
+
+      <div class="media2">
+
+        <div class="media-body">
+        Titulo: <input type="text" class="titulo-input" ng-model="codeInfo.titulo">
+        <textarea name="post" rows="6" cols="70" placeholder="Pega tu código aquí" class="codigo" ng-model="codeInfo.codigo"></textarea>
+        <br>
+        <div class="form-group">
+        <label>Seleccione Sintaxis</label>
+        <br>
+        <div class="container-fluid col-md-6">
+
+        <select class="form-control" cols="50" id="sel1" ng-model="codeInfo.sintaxis">
+          <option value="html">HTML</option>
+          <option value="javascript">JavaScript</option>
+          <option value="php">PHP</option>
+          <option value="css">CSS</option>
+          <option value="c">C</option>
+        </select>
+        </div>
+        <div class="row">
+        <button ng-click="sendCode()" class="btn btn-large btn-warning" name="button">Publicar</button>
+      </div>
+      </div>
+      </div>
+    </div>
+
+    </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

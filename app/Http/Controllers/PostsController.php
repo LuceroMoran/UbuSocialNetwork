@@ -25,9 +25,23 @@ class PostsController extends Controller
     ->join('user-data','users.id','=','user-data.user_id')
     ->join('users as MU','posts.mencion','=','MU.id')
     ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture',
-      'MU.name as mname','posts.id')
+      'MU.name as mname','posts.id','posts.likes')
     ->where('posts.id_user','=',$userid)->orWhere('posts.mencion', '=',$userid)
     ->orderBy('posts.created_at','desc')->take(4)->get();
     return $getpost;
+    }
+
+    public function post_a_code(){
+      session_start();
+      $userid = $_SESSION['uid'];
+      $codigo = Request::input('codigo');
+      $sintaxis = Request::input('sintaxis');
+      $publicar = DB::table('post-codigos')->insert([
+        'user_id' => $userid,
+        'codigo' => $codigo,
+        'sintaxis' => $sintaxis,
+      ]);
+
+      return 200;
     }
 }

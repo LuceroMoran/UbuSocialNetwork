@@ -36,6 +36,7 @@ Route::post('publicprofile/like','PublicProfile@addLike');
 Route::post('group/create','GroupsController@addGroup');
 Route::post('group/info','GroupsController@getData');
 Route::post('group/new_member','GroupsController@addMember');
+Route::post('postcode','PostsController@post_a_code');
 
 
 

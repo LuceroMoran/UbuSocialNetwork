@@ -1,5 +1,5 @@
 
-console.log(user_id);
+
 var userperfilapp = angular.module('userperfilapp',['ui.router']);
 userperfilapp.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/myposts');
@@ -13,7 +13,17 @@ userperfilapp.config(function($stateProvider, $urlRouterProvider){
         controller : 'PostComment',
       }
     }
-  });
+  })
+
+  .state('postCode',{
+    url: '/postCode',
+    views:{
+      'content' :{
+        templateUrl : 'templates/perfilcodigo.html',
+        controller : 'PostCodeController',
+      }
+    }
+  })
 });
 
 userperfilapp.controller('MyProfileMainCtrl',['$scope','$http',function($scope,$http){
@@ -88,4 +98,30 @@ $scope.getdo();
     console.log(500);
   })
 });
+}]);
+
+userperfilapp.controller('PostCodeController',['$scope','$http',function($scope,$http){
+  $scope.firstTosend = {id : user_id};
+  $scope.codeInfo = {titulo : '',codigo:'',sintaxis : 'c'}
+  $http.post('getmyinfo',$scope.firstTosend)
+  .success(function(data){
+  console.log(data);
+  console.log(200);
+  $scope.myinfo = data
+  })
+  .error(function(err){
+    console.log(500);
+  })
+
+  $scope.sendCode =function(){
+    $http.post('postcode',$scope.codeInfo)
+    .success(function(data){
+      console.log(data);
+      swal("Publicado con exito")
+      $scope.codeInfo = {titulo:'',codigo:'',sintaxis:'c'};
+    })
+    .error(function(err){
+      console.log("error");
+    })
+  }
 }]);

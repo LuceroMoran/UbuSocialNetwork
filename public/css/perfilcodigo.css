@@ -1,0 +1,30 @@
+textarea.codigo{
+  /*background: red;*/
+  width: 50em;
+  height: 400px;
+  resize: none;
+  outline: none;
+  font-size: 11pt;
+  border: 1px so/lid #fff;
+}
+.row{
+  padding-bottom: 5px;
+  align-items: center;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+}
+.media{
+  padding-bottom: 5px;
+}
+
+.titulo-input{
+  background: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  margin-bottom: .6em;
+}
+
+.titulo-input:focus{
+  border-bottom: 1px solid rgb(165, 150, 200);
+}

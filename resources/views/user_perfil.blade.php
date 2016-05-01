@@ -110,9 +110,10 @@ $user_id = $_SESSION['uid'];
     <div class="main container-fluid col-md-7 col-xs-12 col-sm-12">
       <div class="container-fluid">
         <ul class="nav nav-tabs nav-justified">
-          <li role="presentation" class="active"><a href="#posts">Posts</a></li>
-          <li role="presentation"><a href="perfilseguidores.html">Seguidores</a></li>
-          <li role="presentation"><a href="#mensajes">Mensajes</a></li>
+          <li role="presentation"><a href="#posts">Posts</a></li>
+          <li role="presentation"><a href="#">Seguidores</a></li>
+          <li role="presentation"><a href="#">Mensajes</a></li>
+          <li role="presentation"><a ui-sref="postCode">Publicar código</a></li>
         </ul>
       </div>
 
