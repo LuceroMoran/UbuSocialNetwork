@@ -2,7 +2,7 @@
 
 Blade::setContentTags('<%', '%>');
 Blade::setEscapedContentTags('<%%', '%%>');
-
+git
 
 Route::get('/', function () {
     return view('welcome');
