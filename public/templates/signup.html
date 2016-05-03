@@ -1,31 +1,36 @@
-<div class="container">
+<nav class="nav row one-pillar">
+  <div class="pillar">
+    <p class="logo">Ubu</p>
+  </div>
+</nav>
 
-  <div class="row">
-    <div class="col s12">
-      <form>
-        <div class="row">
-          <div class="input-field col s4">
-            <input ng-model="tryUser.email" type="email" placeholder="Email">
-          </div>
-        </div>
-        <input type="text" style="display:none;">
-        <div class="row">
-          <div class="input-field col s4 ">
-            <input ng-model="tryUser.password" type="password" placeholder="Password">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s8 ">
-            <button class="btn waves-effect waves-light" ng-click="logear()">Login</button>
-              <button class="btn waves-effect waves-light" ui-sref="landing">Aún no tengo cuenta</button>
-          </div>
-        </div>
-
-
-      </form>
+<section class="row three-pillars offer">
+  <div class="container">
+    <div class="pillar">
+      <i class="material-icons border-icon">code</i><em class="text-icon">¡Comparte!</em>
+      <p class="inst-icon">Corparte tu código y deja que la comunidad de apoye, Lee codigo de otras personas y deja que otros lean los tuyos</p>
     </div>
-    <div class="my-logo-container">
-      <img  class="my-logo"src="Images/logo.png">
+    <div class="pillar">
+      <i class="material-icons border-icon">explore</i><em class="text-icon">¡Conéctate!</em>
+      <p class="inst-icon">Sigue a las personas que te interesan y mantente en contacto con ellas</p>
+    </div>
+    <div class="pillar">
+      <i class="material-icons border-icon">face</i><em class="text-icon">¡Date a conocer!</em>
+      <p class="inst-icon">Deja que la gente te siga, comparte tus códigos para que la gente vea lo bueno que eres</p>
     </div>
   </div>
-</div>
+</section>
+
+<section class="inputs">
+  <form >
+    <input class="inpt" type="text" placeholder="Nombre" ng-model="newUser.nombre">
+    <input class="inpt" type="password" placeholder="Contraseña" ng-model="newUser.password">
+    <input class="inpt" type="email" placeholder="Correo" ng-model="newUser.email">
+    <button class="btn" ng-click="logear()">Login</button>
+  </form>
+</section>
+
+
+<footer class="row one-pillar">
+  <a class="pillar by" ui-sref="landing">Aún no tengo cuenta</a>
+</footer>

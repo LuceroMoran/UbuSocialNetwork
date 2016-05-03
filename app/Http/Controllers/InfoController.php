@@ -8,7 +8,8 @@ use DB;
 class InfoController extends Controller
 {
     public function get_my_info(){
-      $userid = Request::input('id');
+      session_start();
+      $userid = $_SESSION['uid'];
       $getinfo = DB::table('users')
       ->join('user-data','users.id','=','user-data.user_id')
       ->select('users.name','users.id','user-data.profile_picture',

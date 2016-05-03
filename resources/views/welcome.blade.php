@@ -3,15 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Ubu, Devs Social Network</title>
-    <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/welcomestyle.css">
+    <link rel="stylesheet" href="css/frappe.css">
     <link rel="shortcut icon" href="Images/logo.png">
     <link rel="stylesheet" href="sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="/icon/icomoon/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:600' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app="welcomeapp">
-
-
-
+    <video loop  poster="Images/polina.jpg" id="bgvid">
+    <source src="videos/polina.webm" type="video/webm">
+    </video>
 <div ui-view="content"></div>
 
 

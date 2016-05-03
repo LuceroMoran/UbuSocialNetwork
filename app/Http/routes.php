@@ -13,6 +13,8 @@ Route::get('/my_profile',[function(){
 
 
 Route::get('/publicprofile={email}','PublicProfile@getView');
+Route::get('/codigo_id={id}','EditorController@getView');
+Route::post('code_view/info','EditorController@getInfo');
 
 
 

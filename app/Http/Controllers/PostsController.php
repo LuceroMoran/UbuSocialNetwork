@@ -36,10 +36,12 @@ class PostsController extends Controller
       $userid = $_SESSION['uid'];
       $codigo = Request::input('codigo');
       $sintaxis = Request::input('sintaxis');
+      $titulo = Request::input('titulo');
       $publicar = DB::table('post-codigos')->insert([
         'user_id' => $userid,
         'codigo' => $codigo,
         'sintaxis' => $sintaxis,
+        'titulo' => $titulo,
       ]);
 
       return 200;
