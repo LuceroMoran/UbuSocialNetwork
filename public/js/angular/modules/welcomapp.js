@@ -1,5 +1,10 @@
 var video = document.getElementById('bgvid');
 video.play();
+document.getElementsByTagName('video')[0].onended = function () {
+  this.load();
+  this.play();
+};
+
 var welcomeapp = angular.module('welcomeapp',['ui.router']);
 welcomeapp.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/landing');
