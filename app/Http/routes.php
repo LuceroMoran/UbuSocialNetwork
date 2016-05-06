@@ -43,6 +43,7 @@ Route::post('getMyFollowers','InfoController@get_followers');
 Route::post('getMyPostCode','PostsController@get_my_codepost');
 Route::post('editor/postComment','EditorController@post_comment');
 Route::post('editor/getComment','EditorController@get_comments');
+Route::post('public/getCodes','PublicProfile@get_codes');
 
 
 

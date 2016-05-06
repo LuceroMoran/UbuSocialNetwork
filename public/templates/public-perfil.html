@@ -16,6 +16,20 @@
       </div>
       <br>
 
+      <div class="media" ng-repeat="code in postCode">
+            <div class="media-left">
+              <a href="perfil.html">
+                <img ng-src="{{code.profile_picture}}" class="img-rounded post-picture" alt="">
+              </a>
+            </div>
+            <div class="media-body" >
+              <h4 class="media-heading name-post"> {{code.name}} </h4>
+              <p id="post-code-body" ng-click="viewCode(code.id)">
+               Titulo: {{code.titulo}} , Sintaxis: {{code.sintaxis}}
+              </p>
+            </div>
+      </div>
+
        <div class="media" ng-repeat="new in publicaciones">
          <div class="media-left">
           <a href="perfil.html">
@@ -31,6 +45,9 @@
           <img src="Images/smile.svg" alt="Dale like" class="like" ng-model="addLike.pid" ng-click="sendlike(new.id)">
           {{new.likes}}
         </div>
-  </div>
+    </div>
+
+
+
 
 <br>

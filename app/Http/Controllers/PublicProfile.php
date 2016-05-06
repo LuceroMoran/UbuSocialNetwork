@@ -129,6 +129,18 @@ class PublicProfile extends Controller
       return 0;
    }
 
+	 public function get_codes(){
+		 session_start();
+		 $code_post = DB::table('post-codigos')
+		 ->join('users','post-codigos.user_id','=','users.id')
+		 ->join('user-data','users.id','=','user-data.user_id')
+		 ->select('post-codigos.id','post-codigos.sintaxis','post-codigos.titulo',
+		 'users.name','user-data.profile_picture','post-codigos.user_id'
+		 )->where('post-codigos.user_id','=',$_SESSION['publicprofileid'])
+		 ->orderBy('post-codigos.id','desc')->take(3)->get();
+		 return $code_post;
+	 }
+
 	 public function addLike(){
 		 session_start();
 		 $user_id = $_SESSION['uid'];

@@ -26,6 +26,13 @@ publicperfilapp.config(function($stateProvider, $urlRouterProvider){
 publicperfilapp.controller('StartPublicController',['$scope','$http',function($scope,$http){
   $scope.posttosend = {post : ''};
   $scope.addLike = {pid : ''};
+
+
+  $scope.viewCode = function(id){
+    window.location = "/codigo_id="+encodeURI(id)
+  }
+
+
 	$scope.follow = function(){
 		$http.post('publicprofile/follow',{})
 		.success(function(data){
@@ -100,6 +107,15 @@ angular.element(document).ready(function () {
 })
 .error(function(err){
 	console.log(500);
+})
+
+$http.post('public/getCodes',{})
+.success(function(data){
+  $scope.postCode = data
+  console.log(data);
+})
+.error(function(err){
+  console.log("error");
 })
 
 });
