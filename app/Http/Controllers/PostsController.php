@@ -46,4 +46,17 @@ class PostsController extends Controller
 
       return 200;
     }
+
+    public function get_my_codepost(){
+      session_start();
+      $userid = $_SESSION['uid'];
+      $code_post = DB::table('post-codigos')
+      ->join('users','post-codigos.user_id','=','users.id')
+      ->join('user-data','users.id','=','user-data.user_id')
+      ->select('post-codigos.id','post-codigos.sintaxis','post-codigos.titulo',
+      'users.name','user-data.profile_picture','post-codigos.user_id'
+      )->where('post-codigos.user_id','=',$userid)
+      ->orderBy('post-codigos.id','desc')->take(2)->get();
+      return $code_post;
+    }
 }

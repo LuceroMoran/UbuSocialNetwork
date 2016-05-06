@@ -63,6 +63,10 @@ userperfilapp.controller('PostComment',['$scope','$http',function($scope,$http){
 $scope.firstTosend = {id : user_id};
 $scope.posttosend = {post:''}
   $scope.addLike = {pid : ''};
+
+$scope.viewCode = function(id){
+  window.location = "/codigo_id="+encodeURI(id)
+}
 $scope.send = function(){
   // console.log($scope.posttosend);
   $http.post('sendapost',$scope.posttosend)
@@ -114,6 +118,15 @@ $scope.getdo();
   })
   .error(function(err){
     console.log(500);
+  })
+
+  $http.post('getMyPostCode',{})
+  .success(function(data){
+    $scope.postCode = data
+    console.log(data);
+  })
+  .error(function(err){
+    console.log("error");
   })
 });
 }]);
