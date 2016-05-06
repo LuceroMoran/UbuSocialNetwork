@@ -30,7 +30,7 @@ video {
 }
 @media screen and (max-device-width: 800px) {
   html {
-    background: url("Images/polina.jpg") #000 no-repeat center center fixed;
+    background: url("Images/polina.jpg") #fff no-repeat center center fixed;
   }
   #bgvid {
     display: none;

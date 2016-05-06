@@ -23,7 +23,7 @@ $user_id = $_SESSION['uid'];
 
     <div ng-controller="MyProfileMainCtrl" >
       <header>
-        <nav class="navbar navbar-fixed-top navbar-default">
+        <nav class="navbar navbar-fixed-top navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1" aria-expanded="true">
@@ -107,13 +107,13 @@ $user_id = $_SESSION['uid'];
 
 
 
-    <div class="main container-fluid col-md-7 col-xs-12 col-sm-12">
+    <div class="main container-fluid col-md-7 col-xs-12 col-sm-12" >
       <div class="container-fluid">
         <ul class="nav nav-tabs nav-justified">
-          <li role="presentation"><a href="#posts">Posts</a></li>
-          <li role="presentation"><a href="#">Seguidores</a></li>
-          <li role="presentation"><a href="#">Mensajes</a></li>
-          <li role="presentation"><a ui-sref="postCode">Publicar código</a></li>
+          <li role="presentation"><a href="#posts" id="pestanas">Posts</a></li>
+          <li role="presentation"><a ui-sref="seeFollowers" id="pestanas">Seguidores</a></li>
+          <li role="presentation"><a href="#"id="pestanas">Mensajes</a></li>
+          <li role="presentation"><a ui-sref="postCode"id="pestanas">Publicar código</a></li>
         </ul>
       </div>
 

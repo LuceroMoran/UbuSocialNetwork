@@ -15,6 +15,16 @@ userperfilapp.config(function($stateProvider, $urlRouterProvider){
     }
   })
 
+  .state('seeFollowers',{
+    url: '/seeFollowers',
+    views:{
+      'content':{
+        templateUrl:'templates/perfilseguidores.html',
+        controller :'followersControler'
+      }
+    }
+  })
+
   .state('postCode',{
     url: '/postCode',
     views:{
@@ -125,3 +135,19 @@ userperfilapp.controller('PostCodeController',['$scope','$http',function($scope,
     })
   }
 }]);
+
+userperfilapp.controller('followersControler',['$scope','$http',function($scope,$http){
+  console.log("Adentro de followers");
+  $scope.verperfil = function(email){
+    window.location = "/publicprofile="+email;
+  }
+  angular.element(document).ready(function () {
+    $http.post('getMyFollowers',{})
+    .success(function(data){
+      $scope.followersdata = data;
+    })
+    .error(function(data){
+      console.log(data);
+    })
+  });
+}])
