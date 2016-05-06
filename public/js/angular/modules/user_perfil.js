@@ -38,6 +38,7 @@ userperfilapp.config(function($stateProvider, $urlRouterProvider){
 
 userperfilapp.controller('MyProfileMainCtrl',['$scope','$http',function($scope,$http){
   $scope.firstTosend = {id : user_id};
+  $scope.search={email:''}
   angular.element(document).ready(function () {
     $http.post('getmyinfo',$scope.firstTosend)
     .success(function(data){
@@ -49,6 +50,13 @@ userperfilapp.controller('MyProfileMainCtrl',['$scope','$http',function($scope,$
       console.log(500);
     })
  });
+
+ $scope.searchSb = function(){
+    $scope.url = "/publicprofile="+encodeURI($scope.search.email)
+    window.location = $scope.url
+ }
+
+
 }]);
 
 userperfilapp.controller('PostComment',['$scope','$http',function($scope,$http){
