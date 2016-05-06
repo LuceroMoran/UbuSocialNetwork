@@ -18,6 +18,33 @@ codeapp.controller('firstController',['$scope','$http',function($scope,$http){
   .error(function(err){
     console.log("ERR");
   })
+
+  $scope.comentarioData = {comentario:''}
+  $scope.sendComentario = function(){
+    $http.post('editor/postComment',$scope.comentarioData)
+    .success(function(data){
+      swal("Comentario Agregado")
+      $scope.comentarioData.comentario = ''
+    })
+    .error(function(err){
+      swal("Error")
+    })
+  }
+
+  $scope.comentariosOn = function(){
+    setInterval(function () {
+      $http.post('editor/getComment',{})
+      .success(function(data){
+        // console.log(data);
+        $scope.comentarios = data
+      })
+      .error(function(data){
+        console.log("Error");
+      })
+    }, 800);
+  }
+
+  $scope.comentariosOn()
 }]);
 
 var editor_edit = function(c){

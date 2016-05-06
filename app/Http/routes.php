@@ -41,6 +41,8 @@ Route::post('group/new_member','GroupsController@addMember');
 Route::post('postcode','PostsController@post_a_code');
 Route::post('getMyFollowers','InfoController@get_followers');
 Route::post('getMyPostCode','PostsController@get_my_codepost');
+Route::post('editor/postComment','EditorController@post_comment');
+Route::post('editor/getComment','EditorController@get_comments');
 
 
 

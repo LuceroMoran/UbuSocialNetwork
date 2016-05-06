@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-05-2016 a las 05:21:45
+-- Tiempo de generación: 06-05-2016 a las 06:45:52
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 5.6.19
 
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ubu`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios-codigos`
+--
+
+CREATE TABLE `comentarios-codigos` (
+  `id` bigint(80) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `codigo_id` bigint(20) NOT NULL,
+  `comentario` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `comentarios-codigos`
+--
+
+INSERT INTO `comentarios-codigos` (`id`, `user_id`, `codigo_id`, `comentario`) VALUES
+(1, 8, 3, 'Este código es genial'),
+(2, 8, 3, 'A ver crack, como le hiciste'),
+(3, 8, 3, 'error en linea 3'),
+(4, 8, 3, 'jajajaj idiota'),
+(5, 8, 3, 'Y en la 4 no hay nada'),
+(6, 8, 3, 'Lol, si funciono');
 
 -- --------------------------------------------------------
 
@@ -76,7 +101,8 @@ INSERT INTO `likes` (`interaction_id`, `post_id`, `user_id`) VALUES
 (27, 25, 8),
 (28, 27, 8),
 (29, 28, 11),
-(30, 29, 11);
+(30, 29, 11),
+(31, 30, 8);
 
 -- --------------------------------------------------------
 
@@ -170,7 +196,8 @@ INSERT INTO `posts` (`id`, `id_user`, `text`, `mencion`, `likes`, `created_at`, 
 (26, 8, 'Joel es gay!', 8, 0, '2016-05-02 19:54:00', NULL),
 (27, 8, 'Rene es gay', 8, 1, '2016-05-03 15:58:28', NULL),
 (28, 11, 'Soy gay', 11, 1, '2016-05-03 15:59:59', NULL),
-(29, 11, 'Perdonen familia, me hackearon', 11, 1, '2016-05-03 16:00:09', NULL);
+(29, 11, 'Perdonen familia, me hackearon', 11, 1, '2016-05-03 16:00:09', NULL),
+(30, 8, 'Esto esta quedando genial', 8, 1, '2016-05-06 03:28:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -268,6 +295,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 
 --
+-- Indices de la tabla `comentarios-codigos`
+--
+ALTER TABLE `comentarios-codigos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `groups`
 --
 ALTER TABLE `groups`
@@ -328,6 +361,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios-codigos`
+--
+ALTER TABLE `comentarios-codigos`
+  MODIFY `id` bigint(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT de la tabla `groups`
 --
 ALTER TABLE `groups`
@@ -341,7 +379,7 @@ ALTER TABLE `groups_members`
 -- AUTO_INCREMENT de la tabla `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `post-codigos`
 --
@@ -351,7 +389,7 @@ ALTER TABLE `post-codigos`
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `suscribciones`
 --

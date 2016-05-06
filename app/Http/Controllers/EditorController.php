@@ -23,4 +23,29 @@ class EditorController extends Controller
     $get_code = DB::table('post-codigos')->where('id','=',$code_id)->get();
     return $get_code;
   }
+
+  public function post_comment(){
+    session_start();
+    $comentario = Request::input('comentario');
+    $post = DB::table('comentarios-codigos')
+    ->insert([
+      'user_id' => $_SESSION['uid'],
+      'codigo_id' => $_SESSION['code_id'],
+      'comentario' => $comentario,
+    ]);
+
+    return 200;
+  }
+
+  public function get_comments(){
+    session_start();
+    $get_comment = DB::table('comentarios-codigos')
+    ->join('users','comentarios-codigos.user_id','=','users.id')
+    ->join('user-data','users.id','=','user-data.user_id')
+    ->select('users.name','user-data.profile_picture','comentarios-codigos.comentario','comentarios-codigos.codigo_id')
+    ->where('comentarios-codigos.codigo_id','=',$_SESSION['code_id'])
+    ->orderBy('comentarios-codigos.id','desc')
+    ->get();
+    return $get_comment;
+  }
 }
