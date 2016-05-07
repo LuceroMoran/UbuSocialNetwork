@@ -48,7 +48,7 @@ $user_id = $_SESSION['uid'];
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="perfil.html"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Opciones</a></li>
+                    <li><a ng-click='gotoSettings()'><span ng-click='gotoSettings()' class="glyphicon glyphicon-wrench"></span> Opciones</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#"><span class=" glyphicon glyphicon-off"></span> Log Out</a></li>
                   </ul>
