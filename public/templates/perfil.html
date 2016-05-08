@@ -2,6 +2,7 @@
   <div class="media-left" ng-repeat="info in myinfo">
     <a href="#">
       <img class="media-object img-rounded post-picture" ng-src="{{info.profile_picture}}" alt="..." >
+      <button ng-click="gotoSettings()">Settings</button>
     </a>
   </div>
   <div class="media-body">

@@ -3,14 +3,15 @@
 Blade::setContentTags('<%', '%>');
 Blade::setEscapedContentTags('<%%', '%%>');
 
-
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/my_profile',[function(){
   return view('user_perfil');
 }]);
-
+Route::get('/settings',[function(){
+  return view('config');
+}]);
 
 Route::get('/publicprofile={email}','PublicProfile@getView');
 Route::get('/codigo_id={id}','EditorController@getView');
@@ -44,6 +45,7 @@ Route::post('getMyPostCode','PostsController@get_my_codepost');
 Route::post('editor/postComment','EditorController@post_comment');
 Route::post('editor/getComment','EditorController@get_comments');
 Route::post('public/getCodes','PublicProfile@get_codes');
+Route::post('upload', 'UploadController@upload');
 
 
 

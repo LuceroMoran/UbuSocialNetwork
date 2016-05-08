@@ -56,6 +56,10 @@ userperfilapp.controller('MyProfileMainCtrl',['$scope','$http',function($scope,$
     window.location = $scope.url
  }
 
+ $scope.gotoSettings = function(){
+   window.location = "/settings";
+ }
+
 
 }]);
 
