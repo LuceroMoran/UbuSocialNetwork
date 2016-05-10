@@ -2,19 +2,21 @@
   <div class="media-left" ng-repeat="info in myinfo">
     <a href="#">
       <img class="media-object img-rounded post-picture" ng-src="{{info.profile_picture}}" alt="..." >
-      <button ng-click="gotoSettings()">Settings</button>
+      <!-- <button ng-click="gotoSettings()">Settings</button> -->
     </a>
   </div>
   <div class="media-body">
     <!-- <h4 class="media-heading"></h4> -->
   <textarea ng-repeat="info in myinfo"  ng-model="posttosend.post"name="post" rows="3" cols="80" placeholder="¿Qué estás tramando {{info.name}}?"></textarea>
   <br>
-  <button type="submit" class="btn btn-large btn-info" ng-click="send()">Publicar</button>
+  <button type="submit" class="btn btn-large btn-danger" ng-click="send()">Publicar</button>
 </div>
 </div>
 <br><br>
-<div class="media" ng-repeat="code in postCode">
-      <div class="media-left">
+
+
+<div class="media" ng-repeat="code in postCode" >
+      <div class="media-left" ng-click="viewCode(code.id)">
         <a href="perfil.html">
           <img ng-src="{{code.profile_picture}}" class="img-rounded post-picture" alt="">
         </a>
@@ -26,6 +28,9 @@
         </p>
       </div>
 </div>
+
+
+
 <br>
   <div class="media" ng-repeat="new in publicaciones">
         <div class="media-left">
@@ -35,7 +40,7 @@
         </div>
         <div class="media-body" >
           <h4 class="media-heading name-post"> {{new.name}}  <span ng-if="new.name != new.mname"> : {{new.mname}}</h4>
-          <p>
+          <p class="post-news">
             {{new.text}}
           </p>
           <img src="Images/smile.svg" alt="Dale like" class="like" ng-model="addLike.pid" ng-click="sendlike(new.id)">

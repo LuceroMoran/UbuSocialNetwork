@@ -61,6 +61,23 @@
   </div>
   </div>
 
+<aside class="col-md-4">
+  <h3>Codigos Relacionados</h3>
+  <div class="media" id="related-code" ng-repeat="c in comentarios">
+    <div class="media-left">
+      <a href="perfil.html">
+        <img ng-src="{{c.profile_picture}}" class="img-rounded post-picture" alt="">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading" ><a href="#">{{c.name}}</h4></a>
+      <p>
+    {{c.comentario}}
+    </p>
+    </div>
+  </div>
+</aside>
+
 
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>

@@ -1,19 +1,30 @@
 body {
   padding-top: 60px;
-  background: -webkit-linear-gradient(to right,#353F40 ,#b98a00);
+  background: #1F1C16;
+  /*background: -webkit-linear-gradient(to right,#353F40 ,#b98a00);
   background: -o-linear-gradient(to right,#353F40 ,#b98a00);
   background: -moz-linear-gradient(to right,#353F40 ,#b98a00);
-  background: linear-gradient(to right,#353F40 ,#b98a00);
-  color: #fff;
+  background: linear-gradient(to right,#353F40 ,#b98a00);*/
+
+  color: #E8C000;
 }
 
+.post-news{
+  font-size: 120%;
+}
+.botones{
+  position: relative;
+  left: 50px;
+  top: -20px;
+  z-index: 4;
+}
 #post-code-body{
-  color: rgb(23, 17, 69);
+  color: #E8C000;
   font-size: 120%;
     cursor: crosshair;
 }
 .name-post{
-  color: rgb(21, 21, 34);
+  color: #4E84E8;
 
 }
 #aside-1{
@@ -22,7 +33,7 @@ body {
   border-radius: 10px;
 }
 #pestanas{
-  color: #000;
+  color: #4E84E8;
 }
 aside{
   /*background: #FF9933;*/
@@ -45,13 +56,29 @@ caption{
 }
 textarea{
   background: none;
-  color: #fff;
+  color: #b98a00;
   overflow:none;
   outline: none;
   width: 550px;
   border: none;
   font-size: 20px;
   resize: none;
+}
+*::-webkit-input-placeholder {
+    /* Google Chrome y Safari */
+    color: #4E84E8;
+}
+*:-moz-placeholder {
+    /* Firefox anterior a 19 */
+    color: #4E84E8;
+}
+*::-moz-placeholder {
+    /* Firefox 19 y superior */
+    color: #4E84E8;
+}
+*:-ms-input-placeholder {
+    /* Internet Explorer 10 y superior */
+    color: #4E84E8;
 }
 aside.aside2{
   display: none;
@@ -65,9 +92,15 @@ img{
   width: 320px;
   height: 180px;
 }
-
+.sidebar-picture{
+  background-color: #282729;
+  border-radius: 10px;
+  border: 1px solid #b98a00;
+}
 .post-picture{
   height: 70px;
+  background-color: #1F1C16;
+  border-radius: 10px;
 }
 .like{
   width: 30px;

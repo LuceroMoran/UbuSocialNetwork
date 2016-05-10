@@ -8,7 +8,10 @@ body {
   padding-bottom: 5px;
 }
 aside{
-  background: #FF9933;
+  background: #fff;
+}
+#related-code{
+  border-bottom: 1px solid #999;
 }
 textarea{
   resize: none;
