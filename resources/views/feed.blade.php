@@ -39,11 +39,11 @@
             <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span></button>
     		</form>
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="/feed"><span class="glyphicon glyphicon-home"></span></a></li>
         <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="perfil.html"><span class="glyphicon glyphicon-user"></span>Mi Perfil</a></li>
+        <li><a href="/my_profile"><span class="glyphicon glyphicon-user"></span>Mi Perfil</a></li>
         <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench"></span>Configuración</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="#"><span class=" glyphicon glyphicon-off"></span>Log Out</a></li>

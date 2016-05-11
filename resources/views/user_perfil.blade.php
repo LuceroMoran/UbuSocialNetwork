@@ -42,7 +42,7 @@ $user_id = $_SESSION['uid'];
                 <button ng-click="searchSb()" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span></button>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="home"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li><a href="/feed"><span class="glyphicon glyphicon-home"></span></a></li>
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -74,10 +74,6 @@ $user_id = $_SESSION['uid'];
             </div>
 
           </section>
-
-
-
-
 
           <div class="container col-md-8 botones">
             <div align="center">
@@ -121,20 +117,10 @@ $user_id = $_SESSION['uid'];
 
       </div>
     </div>
-    <!-- <aside class="col-md-2 col-xs-12 col-sm-12 aside2" >
-    <div class="container-fluid">
-      <caption><h3>Lenguajes mas publicados</h3></caption>
-      <div class="list-group ">
-        <a href="#" class="list-group-item">
-          <span class="badge">9</span>
-          Php
-        </a>
-        <a href="#" class="list-group-item"><span class="badge">6</span>JavaScript</a>
-        <a href="#" class="list-group-item"><span class="badge">5</span>Bootstrap</a>
-        <a href="#" class="list-group-item"><span class="badge">3</span>Html</a>
-      </div>
-    </div>
-    </aside> -->
+
+
+    <aside class="col-md-2" id="aside-2">
+    </aside>
   <script src="js/angular/angular.min.js"></script>
   <script src="js/angular/angular-ui-router.min.js"></script>
   <script src="js/angular/modules/user_perfil.js"></script>
