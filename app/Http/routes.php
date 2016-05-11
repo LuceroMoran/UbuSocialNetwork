@@ -20,10 +20,9 @@ Route::post('code_view/info','EditorController@getInfo');
 
 
 
-//
-// Route::get('/feed' ,['middleware' =>'itson', function(){
-//   return view('feed');
-// }]);
+Route::get('/feed' ,[function(){
+  return view('feed');
+}]);
 Route::post('sendregister','RegisterController@register');
 Route::post('access','LoginController@login');
 Route::post('sendapost','PostsController@post_a_post');
@@ -46,7 +45,9 @@ Route::post('editor/postComment','EditorController@post_comment');
 Route::post('editor/getComment','EditorController@get_comments');
 Route::post('public/getCodes','PublicProfile@get_codes');
 Route::post('upload', 'UploadController@upload');
-
+Route::post('feed/getPost','FeedController@get_post_follows');
+Route::post('feed/info','FeedController@get_info');
+Route::post('feed/codes','FeedController@get_codes');
 
 
 Route::group(['middleware' => ['web']], function () {
