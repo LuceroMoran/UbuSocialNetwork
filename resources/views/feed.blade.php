@@ -119,7 +119,7 @@
         <div class="seccion" ng-repeat="code in codigos">
         <ul>
           <li><a href="#"><img ng-src="{{code.profile_picture}}" class="img-rounded post-picture" alt=""></a><br>
-  	      <a href="#">{{code.name}} publicó "{{code.titulo}}" en {{code.sintaxis}}</a>
+  	      <a ng-click="viewCode(code.id)">{{code.name}} publicó "{{code.titulo}}" en {{code.sintaxis}}</a>
           </li>
         </div>
         </div>

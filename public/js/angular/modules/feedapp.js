@@ -53,4 +53,8 @@ feedapp.controller('MainController',['$scope','$http',function($scope,$http){
       console.log(500);
     })
   };
+
+  $scope.viewCode = function(id){
+    window.location = "/codigo_id="+encodeURI(id)
+  }
 }])
