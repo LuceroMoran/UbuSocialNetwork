@@ -34,6 +34,16 @@ userperfilapp.config(function($stateProvider, $urlRouterProvider){
       }
     }
   })
+
+  .state('user_config',{
+    url: '/user_config',
+    views:{
+      'content' :{
+        templateUrl : 'templates/configuracion.html',
+        controller : 'configController',
+      }
+    }
+  })
 });
 
 userperfilapp.controller('MyProfileMainCtrl',['$scope','$http',function($scope,$http){
@@ -175,4 +185,43 @@ userperfilapp.controller('followersControler',['$scope','$http',function($scope,
       console.log(data);
     })
   });
+}])
+
+
+userperfilapp.controller('configController',['$scope','$http',function($scope,$http){
+  $scope.youtube = {url:''}
+  $scope.facebook = {url:''}
+  $scope.twitter = {url:''}
+  $scope.lenguaje = {sintaxis:''}
+
+  $scope.upYoutube = function(){
+    $http.post('update/Youtube',$scope.youtube)
+    .success(function(data){
+      swal("Actualizado")
+    })
+    .error(function(err){
+      console.log("err");
+    })
+  }
+  $scope.upFacebook = function(){
+    $http.post('update/Facebook',$scope.facebook)
+    .success(function(data){
+      swal("Actualizado")
+    })
+    .error(function(err){
+      console.log("err");
+    })
+  }
+  $scope.upTwitter = function(){
+    $http.post('update/Twitter',$scope.twitter)
+    .success(function(data){
+      swal("Actualizado")
+    })
+    .error(function(err){
+      console.log("err");
+    })
+  }
+  $scope.upLenguaje = function(){
+    console.log($scope.lenguaje.sintaxis);
+  }
 }])

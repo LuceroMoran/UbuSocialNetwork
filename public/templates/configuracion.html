@@ -1,0 +1,48 @@
+
+<body>
+  <div class="container col-md-12">
+    <div class="jumbotron">
+      <h1>Configuraciones</h1>
+    </div>
+    <h3>Otros Contactos</h3>
+    <form role="form">
+      <div class="form-group">
+       <label for="youtube">Canal de Youtube</label>
+       <input type="link" class="form-control" id="youtube" placeholder="Escribe el link" ng-model="youtube.url">
+       <button ng-click="upYoutube()" class="btn btn-danger">Confirmar</button>
+       </div>
+       <div class="form-group">
+        <label for="facebook">Cuenta de Facebook</label>
+        <input type="link" class="form-control" id="Facebook" placeholder="Escribe el link" ng-model="facebook.url">
+        <button ng-click="upFacebook()" class="btn btn-primary">Confirmar</button>
+       </div>
+       <div class="form-group">
+        <label for="twitter">Cuenta de Twitter</label>
+        <input type="link" class="form-control" id="Twitter" placeholder="Escribe el link" ng-model="twitter.url">
+        <button ng-click="upTwitter()" class="btn btn-info">Confirmar</button>
+       </div>
+    </form>
+    <!-- <h3>Foto de Perfil</h3> -->
+    <!-- <div class="form-group">
+    <label for="fotoperfil">Suba una foto para seleccionarla como foto de perfil</label>
+    <br>
+    <button type="submit" name="confirmar" class="btn btn-success">Examinar</button>
+    </div> -->
+    <h3>Lenguaje Preferido</h3>
+    <div class="container col-md-4">
+    <div class="form-group">
+     <label for="sel1">Seleccione el lenguaje:</label>
+     <select class="form-control" cols="80" id="sel1" ng-model="lenguaje.sintaxis">
+       <!-- <option>HTML</option> -->
+       <option>JavaScript</option>
+       <option>PHP</option>
+       <!-- <option>Bootstrap</option> -->
+       <!-- <option>CSS</option> -->
+       <option>Otro</option>
+     </select>
+     <button class="btn btn-success" ng-click="upLenguaje()">Enviar</button>
+     </div>
+    </div>
+  </div>
+
+</body>

@@ -46,10 +46,10 @@ $user_id = $_SESSION['uid'];
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="perfil.html"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                    <li><a ng-click='gotoSettings()'><span ng-click='gotoSettings()' class="glyphicon glyphicon-wrench"></span> Opciones</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                    <li><a ui-sref="user_config" class="glyphicon glyphicon-wrench"></span> Opciones</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#"><span class=" glyphicon glyphicon-off"></span> Log Out</a></li>
+                    <li><a href="/"><span class=" glyphicon glyphicon-off"></span> Log Out</a></li>
                   </ul>
                 </li>
               </ul>
@@ -75,22 +75,22 @@ $user_id = $_SESSION['uid'];
 
           </section>
 
-          <div class="container col-md-8 botones">
+          <div class="container col-md-8 botones"  ng-repeat="info in myinfo">
             <div align="center">
               <caption><h4>Otros contactos</h4></caption>
             </div>
             <div class="row">
-              <a href="#" class="btn btn-block btn-danger active">
+              <a  ng-href="{{info.Youtube}}" class="btn btn-block btn-danger active" target="_blank">
                 <span class="glyphicon glyphicon-play"></span> Canal de Youtube
               </a>
             </div>
             <div class="row" ng-repeat="info in myinfo">
-              <a href="{{info.Twitter}}" class="btn btn-block btn-info">
+              <a ng-href="{{info.Twitter}}" class="btn btn-block btn-info" target="_blank">
                 <span><img src="Images/twitter-logo.png" alt="1" width="20" height="20"/></span> Twitter
               </a>
             </div>
             <div class="row">
-              <a href="#" class="btn btn-block btn-primary">
+              <a  ng-href="{{info.Facebook}}"class="btn btn-block btn-primary" target="_blank">
                 <span><img src="Images/face.jpg" alt="" width="20" height="20" /></span> Facebook
               </a>
             </div>

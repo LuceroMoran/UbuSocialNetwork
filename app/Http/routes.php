@@ -48,8 +48,9 @@ Route::post('upload', 'UploadController@upload');
 Route::post('feed/getPost','FeedController@get_post_follows');
 Route::post('feed/info','FeedController@get_info');
 Route::post('feed/codes','FeedController@get_codes');
-
-
+Route::post('update/Youtube','InfoController@updateYoutube');
+Route::post('update/Facebook','InfoController@updateFacebook');
+Route::post('update/Twitter','InfoController@updateTwitter');
 Route::group(['middleware' => ['web']], function () {
     //
 });

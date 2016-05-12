@@ -27,7 +27,7 @@ class PostsController extends Controller
     ->select('posts.id_user','posts.mencion','users.name','posts.text','user-data.profile_picture',
       'MU.name as mname','posts.id','posts.likes')
     ->where('posts.id_user','=',$userid)->orWhere('posts.mencion', '=',$userid)
-    ->orderBy('posts.created_at','desc')->get();
+    ->orderBy('posts.created_at','desc')->take(5)->get();
     return $getpost;
     }
 
