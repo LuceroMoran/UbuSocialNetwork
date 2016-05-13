@@ -1,6 +1,10 @@
 var feedapp = angular.module('feedapp',[]);
 
 feedapp.controller('MainController',['$scope','$http',function($scope,$http){
+  $scope.search = {email:''}
+  $scope.searchSb = function(){
+    window.location = "publicprofile="+$scope.search.email
+  }
 
   $http.post('group/myGroups',{})
   .success(function(data){

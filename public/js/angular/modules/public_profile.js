@@ -23,6 +23,12 @@ publicperfilapp.config(function($stateProvider, $urlRouterProvider){
   });
 });
 
+publicperfilapp.controller('MainController',['$scope',function($scope){
+  $scope.search = {email:''}
+  $scope.searchSb = function(){
+    window.location= "publicprofile="+$scope.search.email
+  }
+}])
 publicperfilapp.controller('StartPublicController',['$scope','$http',function($scope,$http){
   $scope.posttosend = {post : ''};
   $scope.addLike = {pid : ''};

@@ -33,9 +33,9 @@
             <div class="collapse navbar-collapse" id="navbar-1">
             <form class="navbar-form navbar-left" role="search">
             <div class="form-group" >
-            <input type="text" class="form-control" placeholder="Buscar">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.email">
             </div>
-            <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span></button>
+            <button ng-click="searchSb()" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span></button>
     		</form>
         <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>

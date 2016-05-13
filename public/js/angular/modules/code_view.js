@@ -1,5 +1,9 @@
 var codeapp = angular.module('codeapp',['ui.router']);
 codeapp.controller('firstController',['$scope','$http',function($scope,$http){
+  $scope.search={email:''}
+  $scope.searchSb = function(){
+    window.location = "publicprofile="+$scope.search.email
+  }
   $scope.viewCode = function(id){
     window.location = "/codigo_id="+encodeURI(id)
   }
