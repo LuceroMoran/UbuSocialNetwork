@@ -2,24 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Request;
+use DB;
 
 class GroupsController extends Controller
 {
-    function addGroup(){
+    public function addGroup(){
       session_start();
-      $id = $_SESSION['publicprofileid']
-      $groupName = Request::input('groupName');
-      $privacy = Request::input('privacy');
-      $create = DB::table('groups')->insert([
-        'name' => $groupName,
-        'privacy' => $privacy,
-        'created_by' => $id
-        ]);
-        return 0;
+      $name = Request::input('nombre');
+      $asunto = Request::input('asunto');
+      $insertar_grupo = DB::table('groups')->insertGetId([
+        'name' => $name,
+        'type' => $asunto,
+        'created_by' => $_SESSION['uid'],
+      ]);
+
+      DB::table('groups_members')->insert([
+        'group_id' => $insertar_grupo,
+        'member_id' => $_SESSION['uid'],
+      ]);
+
+      return 200;
+    }
+
+    public function get_myGroups(){
+      session_start();
+      $misGrupos = DB::table('groups_members')
+      ->join('groups','groups_members.group_id','=','groups.id')
+      ->select('groups.name','groups_members.member_id','groups.id')
+      ->where('member_id','=',$_SESSION['uid'])->get();
+
+      return $misGrupos;
     }
 
     function getData(){

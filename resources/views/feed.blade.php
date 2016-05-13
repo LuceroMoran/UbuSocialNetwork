@@ -4,16 +4,15 @@
     <meta charset="utf-8">
     <title>Ubu, Devs Social Network</title>
     <link rel="stylesheet" href="css/feedstyles.css">
-    <link rel="stylesheet" href="css/frappe.css">
     <link rel="shortcut icon" href="Images/logo.png">
     <link rel="stylesheet" href="sweetalert/sweetalert.css">
     <link rel="stylesheet" href="/icon/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:600' rel='stylesheet' type='text/css'>
   </head>
 
 
@@ -39,7 +38,7 @@
             <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span></button>
     		</form>
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="/feed"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="home"><span class="glyphicon glyphicon-home"></span></a></li>
         <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -56,18 +55,21 @@
         </nav>
     </header>
 
-    <div class="row">
-
-        <div class="main container-fluid col-md-12 col-xs-12 col-sm-12">
-
-
-
-
+    <aside class="col-md-2 col-xs-12 col-sm-12" id="aside-2" >
+    <div class="container-fluid">
+      <h2 id="group">Grupos</h2>
+      <h4>Crea tu Grupo</h4>
+      <a href="#group-modal" class="Group-link" data-toggle="modal"><span class="glyphicon glyphicon-plus"></a>
+      <h4>Tus Grupos</h4>
+      <div ng-repeat="grupos in misgrupos">
+        <a href="#" class="code-link">{{grupos.name}}</a>
+      </div>
+    </div>
+    </aside>
+        <div class="main container-fluid col-md-7 col-xs-12 col-sm-12" id="main">
     	    <!-- post -->
-    		<div class="col-sm-8">
+    		<div class="col-md-12">
           	<div class="media">
-
-
             <div class="media1" ng-repeat="info in myinfo">
             <div class="media-left">
             <a href="#">
@@ -75,7 +77,7 @@
             </a>
             </div>
             <div class="media-body">
-            <h4 class="media-heading">{{info.name}}</h4><br>
+            <a href="#"><h3 class="media-heading" id="nombre">{{info.name}}</h3></a><br>
             <textarea ng-model="posttosend.post"name="post" rows="2" cols="53" placeholder="¿Pero qué estás tramando {{info.name}}?"></textarea>
             <br><br>
             <button ng-click="send()" class="btn btn-large btn-danger" name="button">Publicar</button>
@@ -106,27 +108,52 @@
         </div>
 
     	</div>
-
+    </div>
 
 
     	<!-- barra lateral -->
-    	<div class="col-sm-4">
+      <aside class="col-md-3" id="aside-1">
+      <div class="container-fluid">
     	<div id="barra">
         <div class="titulobarrita">
         -Códigos Recientes-
         </div>
-
+<br>
         <div class="seccion" ng-repeat="code in codigos">
-        <ul>
-          <li><a href="#"><img ng-src="{{code.profile_picture}}" class="img-rounded post-picture" alt=""></a><br>
-  	      <a ng-click="viewCode(code.id)">{{code.name}} publicó "{{code.titulo}}" en {{code.sintaxis}}</a>
-          </li>
+
+          <a href="#"><img ng-src="{{code.profile_picture}}" class="img-rounded postmini-picture" alt=""></a><br>
+  	      <a ng-click="viewCode(code.id)" class="code-link">{{code.name}} publicó "{{code.titulo}}" en {{code.sintaxis}}</a>
+
         </div>
         </div>
     	</div>
+      </aside>
 
 
-
+      <div class="modal fade" id="group-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Nuevo Grupo</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+             <label for="name">Nombre del Grupo</label>
+             <input type="text" class="form-control" ng-model="grupo.nombre" placeholder="Escribe el nombre del grupo">
+             </div>
+             <div class="form-group">
+              <label for="asunto">Asunto del Grupo</label>
+              <input type="text" class="form-control" ng-model="grupo.asunto" placeholder="Escribe el asunto del grupo">
+             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button ng-click="crearGrupo()" class="btn btn-danger" data-dismiss="modal">Confirmar</button>
+          </div>
+        </div>
+      </div>
+      </div>
 
 
 

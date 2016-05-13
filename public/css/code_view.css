@@ -4,6 +4,11 @@ body {
 .post-picture{
   height: 70px;
 }
+
+.relacionados{
+  cursor: pointer;
+  color: rgb(45, 43, 32);
+}
 .nav{
   padding-bottom: 5px;
 }

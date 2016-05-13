@@ -61,6 +61,7 @@ $user_id = $_SESSION['uid'];
 
       <aside class="col-md-3 col-xs-12 col-sm-12" id="aside-1">
           <section class="jumbotron1" ng-repeat="info in myinfo">
+            <!-- {{info.fav-language}} -->
             <img ng-src="{{info.profile_cover}}" style="position: relative; left: 0px; top:0px; z-index:1;"alt="" class="img-responsive img-rounded cover"/>
             <div class="container-fluid">
               <!-- <div class="row"> -->
@@ -71,6 +72,8 @@ $user_id = $_SESSION['uid'];
             </div>
             <div class="container" ng-repeat="info in myinfo" style="position:relative;left:0px;top:-45px;z-index:3; width:200px;">
             <h3 class="user_name">{{info.name}}</h3>
+            <br>
+            <!-- {{info.fav-language}} -->
             </div>
 
           </section>

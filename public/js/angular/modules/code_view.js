@@ -1,5 +1,16 @@
 var codeapp = angular.module('codeapp',['ui.router']);
 codeapp.controller('firstController',['$scope','$http',function($scope,$http){
+  $scope.viewCode = function(id){
+    window.location = "/codigo_id="+encodeURI(id)
+  }
+  $http.post('editor/related',{})
+  .success(function(data){
+    $scope.relacionados = data
+    console.log(data);
+  })
+  .error(function(err){
+    console.log("error");
+  })
   $http.post('code_view/info',{})
   .success(function(data){
     $scope.codigodata = data

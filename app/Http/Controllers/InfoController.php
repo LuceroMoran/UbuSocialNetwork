@@ -14,6 +14,7 @@ class InfoController extends Controller
       ->join('user-data','users.id','=','user-data.user_id')
       ->select('users.name','users.id','user-data.profile_picture',
       'user-data.profile_cover','user-data.Twitter','user-data.Facebook','user-data.Youtube'
+      ,'user-data.fav-language'
       )->where('users.id','=',$userid)->get();
       return $getinfo;
     }
@@ -66,5 +67,17 @@ class InfoController extends Controller
       ]);
 
       return 200;
+    }
+
+    public function updateLenguaje(){
+      session_start();
+      $sintaxis = Request::input('sintaxis');
+      DB::table('user-data')->where('user_id','=',$_SESSION['uid'])
+      ->update(
+      [
+        'fav-language' => $sintaxis,
+      ]);
+
+      return $sintaxis;
     }
 }

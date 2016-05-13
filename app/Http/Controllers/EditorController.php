@@ -48,4 +48,12 @@ class EditorController extends Controller
     ->get();
     return $get_comment;
   }
+
+  public function related_codes(){
+    session_start();
+    $id_publicador = DB::table('post-codigos')->select('user_id')
+    ->where('id','=',$_SESSION['code_id'])->get();
+    $codigos = DB::table('post-codigos')->where('user_id','=',$id_publicador[0]->user_id)->get();
+    return $codigos;
+  }
 }

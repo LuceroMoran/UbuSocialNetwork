@@ -38,11 +38,13 @@ Route::post('publicprofile/like','PublicProfile@addLike');
 Route::post('group/create','GroupsController@addGroup');
 Route::post('group/info','GroupsController@getData');
 Route::post('group/new_member','GroupsController@addMember');
+Route::post('group/myGroups','GroupsController@get_myGroups');
 Route::post('postcode','PostsController@post_a_code');
 Route::post('getMyFollowers','InfoController@get_followers');
 Route::post('getMyPostCode','PostsController@get_my_codepost');
 Route::post('editor/postComment','EditorController@post_comment');
 Route::post('editor/getComment','EditorController@get_comments');
+Route::post('editor/related','EditorController@related_codes');
 Route::post('public/getCodes','PublicProfile@get_codes');
 Route::post('upload', 'UploadController@upload');
 Route::post('feed/getPost','FeedController@get_post_follows');
@@ -51,6 +53,7 @@ Route::post('feed/codes','FeedController@get_codes');
 Route::post('update/Youtube','InfoController@updateYoutube');
 Route::post('update/Facebook','InfoController@updateFacebook');
 Route::post('update/Twitter','InfoController@updateTwitter');
+Route::post('update/Lenguaje','InfoController@updateLenguaje');
 Route::group(['middleware' => ['web']], function () {
     //
 });

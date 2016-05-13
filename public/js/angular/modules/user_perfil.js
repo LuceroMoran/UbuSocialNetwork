@@ -222,6 +222,14 @@ userperfilapp.controller('configController',['$scope','$http',function($scope,$h
     })
   }
   $scope.upLenguaje = function(){
-    console.log($scope.lenguaje.sintaxis);
+    alert($scope.lenguaje.sintaxis)
+    $http.post('update/Lenguaje',$scope.lenguaje)
+    .success(function(data){
+      swal("Actualizado")
+      alert(data)
+    })
+    .error(function(err){
+      console.log("err");
+    })
   }
 }])

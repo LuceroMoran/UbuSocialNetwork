@@ -1,6 +1,14 @@
 var feedapp = angular.module('feedapp',[]);
 
 feedapp.controller('MainController',['$scope','$http',function($scope,$http){
+  $http.post('group/myGroups',{})
+  .success(function(data){
+    console.log(data);
+    $scope.misgrupos = data;
+  })
+  .error(function(err){
+    console.log("error");
+  })
   $http.post('feed/getPost',{})
   .success(function(data){
     // console.log(data);
@@ -56,5 +64,17 @@ feedapp.controller('MainController',['$scope','$http',function($scope,$http){
 
   $scope.viewCode = function(id){
     window.location = "/codigo_id="+encodeURI(id)
+  }
+
+
+  $scope.grupo = {nombre:'',asunto:''}
+  $scope.crearGrupo = function(){
+    $http.post('group/create',$scope.grupo)
+    .success(function(data){
+      swal("Creado correctamente")
+    })
+    .error(function(err){
+      swal("Error")
+    })
   }
 }])
