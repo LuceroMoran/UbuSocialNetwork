@@ -67,25 +67,31 @@ publicperfilapp.controller('StartPublicController',['$scope','$http',function($s
 
 // $scope.publicaciones = {name : '', text : '' , profile_picture : ''}
 angular.element(document).ready(function () {
-  $http.post('publicprofile/getposts',{})
-  .success(function(data){
-    // console.log(data)
-    $scope.publicaciones = data.postinfo;
-  })
-  .error(function(err){
-    console.log(500);
-  })
 
-  $http.post('publicprofile/getposts',{})
-  .success(function(data){
-    // console.log("Post info");
-    // console.log(data)
-    $scope.post_id = data.posts_ids;
-  })
-  .error(function(err){
-    console.log(500);
-  })
+  $scope.intervalo = function(){
+    setInterval(function () {
+      $http.post('publicprofile/getposts',{})
+      .success(function(data){
+        // console.log(data)
+        $scope.publicaciones = data.postinfo;
+      })
+      .error(function(err){
+        console.log(500);
+      })
 
+      $http.post('publicprofile/getposts',{})
+      .success(function(data){
+        // console.log("Post info");
+        // console.log(data)
+        $scope.post_id = data.posts_ids;
+      })
+      .error(function(err){
+        console.log(500);
+      })
+    }, 800);
+  }
+
+$scope.intervalo();
   $http.post('publicprofile/getinfo',{})
   .success(function(data){
 

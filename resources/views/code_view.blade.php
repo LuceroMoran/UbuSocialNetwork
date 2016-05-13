@@ -10,6 +10,42 @@
    <link rel="stylesheet" href="sweetalert/sweetalert.css">
 </head>
 <body ng-app="codeapp" ng-controller="firstController">
+  <header>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1" aria-expanded="true">
+            <span class="sr-only">Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"> <span><img src="Images/logo.png" align="center" width="50" height="25"/></span></script></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-1">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group" >
+              <input type="text" class="form-control" placeholder="Buscar" ng-model="search.email">
+            </div>
+            <button ng-click="searchSb()" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/feed"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                <li><a ui-sref="user_config" class="glyphicon glyphicon-wrench"></span> Opciones</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="/"><span class=" glyphicon glyphicon-off"></span> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+  </header>
   <textarea id="recibeCodigo">{{data.codigo}}</textarea>
   <div class="main container-fluid col-md-8 col-xs-12 col-sm-12">
 
@@ -22,7 +58,7 @@
 
       </pre>
       </div>
-      <button type="submit" class="btn btn-large btn-primary" name="like">Like</button>
+      <!-- <button type="submit" class="btn btn-large btn-primary" name="like">Like</button> -->
 
       <div class="media" id="media-com">
         <div class="media-left">

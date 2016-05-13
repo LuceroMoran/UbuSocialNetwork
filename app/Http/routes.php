@@ -15,6 +15,7 @@ Route::get('/settings',[function(){
 
 Route::get('/publicprofile={email}','PublicProfile@getView');
 Route::get('/codigo_id={id}','EditorController@getView');
+Route::get('/grupo={id}','GroupsController@getView');
 Route::post('code_view/info','EditorController@getInfo');
 
 
@@ -36,7 +37,13 @@ Route::post('publicprofile/getfollowers','PublicProfile@get_followers');
 Route::post('publicprofile/post','PublicProfile@post_to_public');
 Route::post('publicprofile/like','PublicProfile@addLike');
 Route::post('group/create','GroupsController@addGroup');
-Route::post('group/info','GroupsController@getData');
+Route::post('group/info','GroupsController@get_info');
+Route::post('group/posts','GroupsController@get_posts');
+Route::post('group/post','GroupsController@do_post');
+Route::post('group/getNotas','GroupsController@getNotas');
+Route::post('group/nuevaNota','GroupsController@agregarNota');
+Route::post('group/eliminarNota','GroupsController@eliminarNota');
+Route::post('group/members','GroupsController@get_members');
 Route::post('group/new_member','GroupsController@addMember');
 Route::post('group/myGroups','GroupsController@get_myGroups');
 Route::post('postcode','PostsController@post_a_code');

@@ -1,6 +1,7 @@
 var feedapp = angular.module('feedapp',[]);
 
 feedapp.controller('MainController',['$scope','$http',function($scope,$http){
+
   $http.post('group/myGroups',{})
   .success(function(data){
     console.log(data);
@@ -9,15 +10,20 @@ feedapp.controller('MainController',['$scope','$http',function($scope,$http){
   .error(function(err){
     console.log("error");
   })
-  $http.post('feed/getPost',{})
-  .success(function(data){
-    // console.log(data);
-    $scope.news = data
-  })
-  .error(function(data){
-    console.log("error");
-  })
+  $scope.intervalo = function(){
+    setInterval(function () {
+      $http.post('feed/getPost',{})
+      .success(function(data){
+        // console.log(data);
+        $scope.news = data
+      })
+      .error(function(data){
+        console.log("error");
+      })
+    }, 800);
+  }
 
+$scope.intervalo();
   $http.post('feed/info',{})
   .success(function(data){
     $scope.myinfo = data

@@ -1,0 +1,22 @@
+<div>
+  <br>
+  <textarea class="form-control" ng-model="publicacion.mensaje" rows="3" placeholder="Que estas tramando"></textarea> <br>
+  <div class="pull-right">
+            <button  class="btn btn-warning" ng-click="send()">Publicar</button>
+          </div>
+            <br> <br>
+          </header>
+          <!-- Comentarios/publicaciones-->
+          <div class="media" ng-repeat="post in publicaciones">
+            <div class="media-left">
+              <a href="perfil.html">
+                <img ng-src="{{post.profile_picture}}" class="img-rounded img" alt="" >
+              </a>  </div>
+            <div class="media-body">
+              <a href="perfil.html">
+                <h5 class="media-heading">{{post.name}}  <span>   </span></h5></a>
+                <p> {{post.texto}} </p>
+              </div>
+            </div>
+
+  </div>
