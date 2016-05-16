@@ -122,38 +122,40 @@ class GroupsController extends Controller
       return 404;
     }
 
-    function getData(){
+    public function postCode(){
       session_start();
-      $data = array(
-        "group_id" => [],
-    		"group_name" => [],
-        "group_type" => [],
-        "group_privacy" => [],
-        "created_by" => []
-        );
+      $titulo = Request::input('titulo');
+      $codigo = Request::input('codigo');
+      $sintaxis = Request::input('sintaxis');
 
-    	$id = $_SESSION['publicprofileid'];
-      $getData = DB::table('groups')
-      ->select('groups.id')
-      ->where('groups.created_by', '=',  $id)
-      ->orderBy('groups.created_at', 'desc')->take(1)->get();
-      $data['group_id'] = $getData;
+      $valida = DB::table('groups_members')->where('group_id', '=',$_SESSION['group_id'])
+      ->where('member_id', '=',$_SESSION['uid'])->get();
 
-      return $data;
-    }
-
-    function addMember(){
-      $group_id = Request::input('group_id');
-      $member_id = Request::input('memeber_id');
-      $privilege = Request::input('privilege');
-      $create = DB::table('groups_members')->insert([
-        'group_id' => $group_id,
-        'member_id' => $member_id,
-        'admin' => $privilege,
+      if($valida != null){
+        $insertar = DB::table('post-codigos')->insert([
+          'user_id' => $_SESSION['uid'],
+          'codigo' => $codigo,
+          'sintaxis' => $sintaxis,
+          'titulo' => $titulo,
+          'grupo_id' => $_SESSION['group_id'],
         ]);
-        return 0;
+        return 200;
+      }
+      return 404;
     }
 
-    /*function updateMember(){
-    }*/
+    public function getCodes(){
+      session_start();
+
+            $code_post = DB::table('post-codigos')
+            ->join('users','post-codigos.user_id','=','users.id')
+            ->join('user-data','users.id','=','user-data.user_id')
+            ->select('post-codigos.id','post-codigos.sintaxis','post-codigos.titulo',
+            'users.name','user-data.profile_picture','post-codigos.user_id','post-codigos.grupo_id'
+            )->where('post-codigos.grupo_id',$_SESSION['group_id'])
+            ->orderBy('post-codigos.id','desc')->get();
+
+            return $code_post;
+    }
+
 }

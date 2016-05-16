@@ -72,8 +72,9 @@
 </a><header>
   <div class="container-fluid">
     <ul class="nav nav-tabs nav-justified">
-      <li role="presentation" class="active"><a href="grupo.html">Posts</a></li>
-      <!-- <li role="presentation"><a href="infogrupo.html">Información</a></li> -->
+      <li role="presentation" ><a ui-sref="main">Posts</a></li>
+      <li role="presentation"><a ui-sref="codigo">Publicar código</a></li>
+      <li role="presentation"><a ui-sref="biblioteca">Biblioteca</a></li>
     </ul>
   </div>
 

@@ -110,7 +110,7 @@ $user_id = $_SESSION['uid'];
         <ul class="nav nav-tabs nav-justified">
           <li role="presentation"><a href="#posts" id="pestanas">Posts</a></li>
           <li role="presentation"><a ui-sref="seeFollowers" id="pestanas">Seguidores</a></li>
-          <li role="presentation"><a href="#"id="pestanas">Mensajes</a></li>
+          <!-- <li role="presentation"><a href="#"id="pestanas">Mensajes</a></li> -->
           <li role="presentation"><a ui-sref="postCode"id="pestanas">Publicar código</a></li>
         </ul>
       </div>
@@ -122,8 +122,8 @@ $user_id = $_SESSION['uid'];
     </div>
 
 
-    <aside class="col-md-2" id="aside-2">
-    </aside>
+    <!-- <aside class="col-md-2" id="aside-2"> -->
+    <!-- </aside> -->
   <script src="js/angular/angular.min.js"></script>
   <script src="js/angular/angular-ui-router.min.js"></script>
   <script src="js/angular/modules/user_perfil.js"></script>

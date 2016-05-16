@@ -1,0 +1,11 @@
+<div class="media" ng-repeat="post in codigos">
+  <div class="media-left">
+    <a href="perfil.html">
+      <img ng-src="{{post.profile_picture}}" class="img-rounded img" alt="" >
+    </a>  </div>
+  <div class="media-body">
+    <a href="#">
+      <h5 class="media-heading">{{post.name}}  <span>   </span></h5></a>
+      <p ng-click="verCodigo(post.id)"> {{post.titulo}}  Sintaxis : {{post.sintaxis}}</p>
+    </div>
+  </div>

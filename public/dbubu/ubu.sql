@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-05-2016 a las 03:23:21
+-- Tiempo de generación: 16-05-2016 a las 06:50:18
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 5.6.19
 
@@ -38,19 +38,10 @@ CREATE TABLE `comentarios-codigos` (
 --
 
 INSERT INTO `comentarios-codigos` (`id`, `user_id`, `codigo_id`, `comentario`) VALUES
-(1, 8, 3, 'Este código es genial'),
-(2, 8, 3, 'A ver crack, como le hiciste'),
-(3, 8, 3, 'error en linea 3'),
-(4, 8, 3, 'jajajaj idiota'),
-(5, 8, 3, 'Y en la 4 no hay nada'),
-(6, 8, 3, 'Lol, si funciono'),
-(7, 8, 2, 'Ala bestia'),
-(8, 8, 3, '¿Despúes del echo no van comillas?'),
-(9, 8, 3, 'Aaaa ya vi porque no, gracias igualmente'),
-(10, 8, 3, 'achissss, que hace eso?'),
-(11, 8, 5, 'eddie es gay'),
-(12, 8, 4, 'Wey, esta mal'),
-(13, 11, 4, 'Bruuh');
+(16, 8, 5, 'Sencillo :D'),
+(17, 11, 6, 'buen código :)'),
+(18, 8, 6, 'Buenisimo'),
+(19, 8, 7, 'Esta genial, muy práctico');
 
 -- --------------------------------------------------------
 
@@ -60,13 +51,21 @@ INSERT INTO `comentarios-codigos` (`id`, `user_id`, `codigo_id`, `comentario`) V
 
 CREATE TABLE `groups` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` int(11) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `privacy` tinyint(1) NOT NULL,
+  `privacy` tinyint(1) DEFAULT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`, `type`, `privacy`, `created_by`, `created_at`, `updated_at`) VALUES
+(3, 'Team Ubu', 'Soporte', NULL, 8, '2016-05-13 00:49:45', NULL),
+(4, 'equipo1', 'poo', NULL, 11, '2016-05-13 13:35:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -75,12 +74,64 @@ CREATE TABLE `groups` (
 --
 
 CREATE TABLE `groups_members` (
-  `interaction_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
   `added_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `groups_members`
+--
+
+INSERT INTO `groups_members` (`id`, `group_id`, `member_id`, `added_at`) VALUES
+(1, 3, 8, '2016-05-13 00:49:45'),
+(2, 3, 10, '2016-05-13 03:09:08'),
+(3, 3, 11, '2016-05-13 03:09:08'),
+(4, 3, 15, '2016-05-13 03:09:18'),
+(5, 4, 11, '2016-05-13 13:35:52');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grupos-notas`
+--
+
+CREATE TABLE `grupos-notas` (
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `nota` varchar(50) NOT NULL,
+  `grupo_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `grupos-notas`
+--
+
+INSERT INTO `grupos-notas` (`id`, `user_id`, `nota`, `grupo_id`) VALUES
+(3, 8, 'Estoy apurado', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grupos-posts`
+--
+
+CREATE TABLE `grupos-posts` (
+  `id` bigint(50) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `texto` varchar(500) NOT NULL,
+  `grupo_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `grupos-posts`
+--
+
+INSERT INTO `grupos-posts` (`id`, `user_id`, `texto`, `grupo_id`) VALUES
+(1, 8, 'A trabajar!', 3),
+(2, 8, 'Notas?', 3),
+(3, 11, 'hola equipo', 3);
 
 -- --------------------------------------------------------
 
@@ -99,24 +150,8 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`interaction_id`, `post_id`, `user_id`) VALUES
-(21, 25, 8),
-(22, 23, 8),
-(23, 23, 8),
-(24, 25, 8),
-(25, 16, 8),
-(26, 16, 8),
-(27, 25, 8),
-(28, 27, 8),
-(29, 28, 11),
-(30, 29, 11),
-(31, 30, 8),
-(32, 25, 8),
-(33, 26, 8),
-(34, 26, 8),
-(35, 31, 8),
-(36, 42, 8),
-(37, 43, 10),
-(38, 43, 8);
+(41, 49, 8),
+(42, 50, 11);
 
 -- --------------------------------------------------------
 
@@ -163,20 +198,21 @@ CREATE TABLE `post-codigos` (
   `user_id` bigint(20) NOT NULL,
   `codigo` text NOT NULL,
   `sintaxis` varchar(50) NOT NULL,
-  `titulo` varchar(50) NOT NULL
+  `titulo` varchar(50) NOT NULL,
+  `grupo_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `post-codigos`
 --
 
-INSERT INTO `post-codigos` (`id`, `user_id`, `codigo`, `sintaxis`, `titulo`) VALUES
-(1, 8, '#include &ltstdio.h>\n#include &ltstdlib.h>\n\nint main(void)\n{\n  printf("Hola mundo");\n  system("PAUSE");     \n  return 0;\n}', 'c', 'Hola mundo en C'),
-(2, 8, 'var a = 1\nvar b = 2\n\nconsole.log(a+b)', 'javascript', 'Suma de dos numeros en Js'),
-(3, 8, '$numero1 = 1;\n$numero2 = 2;\n\necho $numero1 + $numero2;', 'php', 'Suma de numeros en PHP'),
-(4, 11, '#include stdio.h\n\nprint "Soy gay"', 'c', 'Soy gay en c'),
-(5, 8, 'var a  = 3\nvar b = 100\n\nalert(a*b)', 'javascript', 'Multiplicacion de dos numeros en Js'),
-(6, 8, 'printf("Eddie es gay")', 'c', 'Eddie es gay en c');
+INSERT INTO `post-codigos` (`id`, `user_id`, `codigo`, `sintaxis`, `titulo`, `grupo_id`) VALUES
+(1, 8, '#include &ltstdio.h>\n#include &ltstdlib.h>\n\nint main(void)\n{\n  printf("Hola mundo");\n  system("PAUSE");     \n  return 0;\n}', 'c', 'Hola mundo en C', NULL),
+(2, 8, 'var a = 1\nvar b = 2\n\nconsole.log(a+b)', 'javascript', 'Suma de dos numeros en Js', NULL),
+(3, 8, '$numero1 = 1;\n$numero2 = 2;\n\necho $numero1 + $numero2;', 'php', 'Suma de numeros en PHP', NULL),
+(5, 8, 'var a  = 3\nvar b = 100\n\nalert(a*b)', 'javascript', 'Multiplicacion de dos numeros en Js', NULL),
+(6, 11, 'console.log("hola mundo")', 'javascript', 'ejemplo js', NULL),
+(7, 8, 'var a = 1\nvar b = 2\nconsole.log(a+b)', 'javascript', 'Suma de dos numeros', 3);
 
 -- --------------------------------------------------------
 
@@ -199,35 +235,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `id_user`, `text`, `mencion`, `likes`, `created_at`, `updated_at`) VALUES
-(15, 13, 'Madre mia del amor hermoso', 13, 0, '2016-04-17 05:17:44', NULL),
-(16, 13, 'Qué Honduras con tus verduras que tienes a bajas temperaturas?!', 8, 2, '2016-04-17 18:23:52', NULL),
-(17, 13, 'Ah raza!', 13, 0, '2016-04-17 19:11:11', NULL),
-(19, 13, 'Dio mio que pro', 13, 0, '2016-04-17 19:20:12', NULL),
-(20, 13, 'Que narices tio!', 11, 0, '2016-04-17 19:22:44', NULL),
-(21, 11, 'Joder macho ! dejame!', 11, 0, '2016-04-17 19:23:36', NULL),
-(22, 15, 'sup', 15, 0, '2016-04-20 14:26:54', NULL),
-(23, 15, '(◕︵◕)', 11, 2, '2016-04-20 16:42:00', NULL),
-(24, 15, '?¿?¿?¿?¿?¿', 15, 0, '2016-04-21 03:15:44', NULL),
-(25, 8, 'Aqui programando :D', 8, 4, '2016-05-01 19:53:17', NULL),
-(26, 8, 'Joel es gay!', 8, 2, '2016-05-02 19:54:00', NULL),
-(27, 8, 'Rene es gay', 8, 1, '2016-05-03 15:58:28', NULL),
-(28, 11, 'Soy gay', 11, 1, '2016-05-03 15:59:59', NULL),
-(29, 11, 'Perdonen familia, me hackearon', 11, 1, '2016-05-03 16:00:09', NULL),
-(30, 8, 'Esto esta quedando genial', 8, 1, '2016-05-06 03:28:08', NULL),
-(31, 8, 'Gran red social tio', 8, 1, '2016-05-08 17:22:29', NULL),
-(32, 8, 'A ver, ya uno no puede programar agusto ni en su casa', 8, 0, '2016-05-08 17:22:46', NULL),
-(33, 8, 'El #teamUbu es genial', 8, 0, '2016-05-08 17:22:53', NULL),
-(34, 8, '#teamcapi', 8, 0, '2016-05-08 17:23:06', NULL),
-(35, 8, '#teamwonderwoman', 8, 0, '2016-05-08 17:23:13', NULL),
-(36, 8, 'Alguien sabe como concatenar en fortran?', 8, 0, '2016-05-08 17:23:24', NULL),
-(37, 8, 'No saben?', 8, 0, '2016-05-08 17:23:37', NULL),
-(38, 8, 'Te amo <3', 11, 0, '2016-05-10 15:13:10', NULL),
-(39, 11, 'esque soy un crack', 11, 0, '2016-05-10 15:31:09', NULL),
-(40, 11, 'Estoy cansado de hacer todo :D', 11, 0, '2016-05-10 15:34:02', NULL),
-(41, 11, 'Estoy con mi amado edgar, y el buen eddie', 11, 0, '2016-05-10 15:39:43', NULL),
-(42, 8, 'Carlos es un crack', 8, 1, '2016-05-10 15:57:09', NULL),
-(43, 10, 'Aveces soy muy genial', 10, 2, '2016-05-11 00:35:55', NULL),
-(44, 8, 'Soy un crack de la leche', 8, 0, '2016-05-11 01:21:47', NULL);
+(48, 8, 'Hoy es un dia pesado', 8, 0, '2016-05-13 04:59:44', NULL),
+(49, 8, 'Ese mi alda', 11, 1, '2016-05-13 05:06:49', NULL),
+(50, 11, 'hola mundo', 11, 1, '2016-05-13 13:29:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -269,6 +279,8 @@ CREATE TABLE `user-data` (
   `profile_picture` varchar(5000) NOT NULL DEFAULT 'users-data/profile-pictures/defaultpicture.jpg',
   `profile_cover` varchar(5000) DEFAULT 'users-data/profile-cover/defaultcover.jpg',
   `Twitter` varchar(5000) DEFAULT NULL,
+  `Youtube` varchar(500) DEFAULT NULL,
+  `Facebook` varchar(500) DEFAULT NULL,
   `fav-language` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -276,20 +288,20 @@ CREATE TABLE `user-data` (
 -- Volcado de datos para la tabla `user-data`
 --
 
-INSERT INTO `user-data` (`id`, `user_id`, `profile_picture`, `profile_cover`, `Twitter`, `fav-language`) VALUES
-(2, 8, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(5, 10, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(6, 11, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(7, 12, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(8, 13, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(9, 14, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(10, 15, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(11, 16, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(13, 17, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(14, 18, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(15, 19, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(16, 20, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL),
-(17, 21, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL);
+INSERT INTO `user-data` (`id`, `user_id`, `profile_picture`, `profile_cover`, `Twitter`, `Youtube`, `Facebook`, `fav-language`) VALUES
+(2, 8, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', 'https://twitter.com/GoGaryi', 'https://www.youtube.com/user/GaryiNmore', 'https://www.facebook.com/GayGaryi', 'PHP'),
+(5, 10, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(6, 11, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(7, 12, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(8, 13, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(9, 14, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(10, 15, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(11, 16, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(13, 17, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(14, 18, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(15, 19, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(16, 20, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL),
+(17, 21, 'users-data/profile-pictures/defaultpicture.jpeg', 'users-data/profile-cover/defaultcover.jpg', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +356,19 @@ ALTER TABLE `groups`
 -- Indices de la tabla `groups_members`
 --
 ALTER TABLE `groups_members`
-  ADD PRIMARY KEY (`interaction_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `grupos-notas`
+--
+ALTER TABLE `grupos-notas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `grupos-posts`
+--
+ALTER TABLE `grupos-posts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `likes`
@@ -398,32 +422,42 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comentarios-codigos`
 --
 ALTER TABLE `comentarios-codigos`
-  MODIFY `id` bigint(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `groups_members`
 --
 ALTER TABLE `groups_members`
-  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `grupos-notas`
+--
+ALTER TABLE `grupos-notas`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `grupos-posts`
+--
+ALTER TABLE `grupos-posts`
+  MODIFY `id` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `interaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `post-codigos`
 --
 ALTER TABLE `post-codigos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT de la tabla `suscribciones`
 --

@@ -14,6 +14,25 @@ grupoapp.config(function($stateProvider, $urlRouterProvider){
       }
     }
   })
+  .state('codigo',{
+    url: '/codigo',
+    views:{
+      'content' :{
+        templateUrl : 'templates/perfilcodigo.html',
+        controller : 'CodeController',
+      }
+    }
+  })
+
+  .state('biblioteca',{
+    url: '/biblioteca',
+    views:{
+      'content' :{
+        templateUrl : 'templates/grupo-codigos.html',
+        controller : 'BiblioController',
+      }
+    }
+  })
 });
 
 
@@ -103,4 +122,35 @@ grupoapp.controller('PostController',['$scope','$http',function($scope,$http){
   }
 
   $scope.intervalWrapper();
+}])
+
+
+grupoapp.controller('CodeController',['$scope','$http',function($scope,$http){
+  // console.log("Estoy dentro");
+  $scope.codeInfo = {titulo : '',codigo:'',sintaxis : 'c'}
+  $scope.sendCode =function(){
+   $http.post('group/postCode',$scope.codeInfo)
+   .success(function(data){
+     if (data == 200) {
+       swal("Publicado con éxito")
+     }
+     if (data == 404){
+       swal("No deberias estar aquí :P")
+     }
+   })
+   }
+}]);
+
+grupoapp.controller('BiblioController',['$scope','$http',function($scope,$http){
+  $http.post('group/getCodes',{})
+  .success(function(data){
+    $scope.codigos = data
+  })
+  .error(function(err){
+    console.log("err");
+  })
+
+  $scope.verCodigo = function(id){
+    window.location = "codigo_id="+id
+  }
 }])
