@@ -158,4 +158,20 @@ class GroupsController extends Controller
             return $code_post;
     }
 
+    public function addMember(){
+      session_start();
+      $user = Request::input('usuario');
+      $validar  = DB::table('users')->where('email',$user)->get();
+      if ($validar != null) {
+        $insertar = DB::table('groups_members')->insert([
+          'group_id' => $_SESSION['group_id'],
+          'member_id' => $validar[0]->id,
+        ]);
+        return 200;
+      }
+      else {
+        return 404;
+      }
+    }
+
 }

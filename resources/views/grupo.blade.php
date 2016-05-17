@@ -64,6 +64,12 @@
         </a></li>
     </ul>
   </div>
+  <p>
+    Añadir miembro
+  </p>
+ <input type="text"  class="input" placeholder="correo del nuevo miembro" ng-model="anadir.usuario">
+ <button  class="btn btn-success" ng-click="nuevo()">Añadir</button>
+
 </aside>
 
 <aside class="main container-fluid col-md-7 col-xs-12 col-sm-12">

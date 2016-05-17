@@ -42,6 +42,21 @@ grupoapp.controller('MainController',['$scope','$http',function($scope,$http){
  $scope.irPerfil = function(){
    window.location = "publicprofile="+$scope.usuario.email
  }
+ $scope.anadir = {usuario:''}
+ $scope.nuevo = function(){
+   $http.post('group/nuevoMiembro',$scope.anadir)
+   .success(function(data){
+     if(data == 404){
+       swal("No existe ese usuario")
+     }
+     else{
+       swal("Añadido")
+     }
+   })
+   .error(function(err){
+     console.log("err");
+   })
+ }
  $scope.close = function(id){
    $scope.cerrar ={nota_id:id}
    $http.post('group/eliminarNota',$scope.cerrar)

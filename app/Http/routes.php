@@ -48,6 +48,7 @@ Route::post('group/new_member','GroupsController@addMember');
 Route::post('group/myGroups','GroupsController@get_myGroups');
 Route::post('group/postCode','GroupsController@postCode');
 Route::post('group/getCodes','GroupsController@getCodes');
+Route::post('group/nuevoMiembro','GroupsController@addMember');
 Route::post('postcode','PostsController@post_a_code');
 Route::post('getMyFollowers','InfoController@get_followers');
 Route::post('getMyPostCode','PostsController@get_my_codepost');
