@@ -14,7 +14,7 @@ class GroupsController extends Controller
       $get_group = DB::table('groups')->where('id','=',$id)->get();
       if($get_group != null){
         $_SESSION['group_id'] = $id;
-        return view('grupo');
+        return view('beta-grupo');
       }
     }
 
