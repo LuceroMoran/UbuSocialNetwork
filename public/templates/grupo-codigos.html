@@ -1,11 +1,39 @@
-<div class="media" ng-repeat="post in codigos">
-  <div class="media-left">
-    <a href="perfil.html">
-      <img ng-src="{{post.profile_picture}}" class="img-rounded img" alt="" >
-    </a>  </div>
-  <div class="media-body">
-    <a href="#">
-      <h5 class="media-heading">{{post.name}}  <span>   </span></h5></a>
-      <p ng-click="verCodigo(post.id)"> {{post.titulo}}  Sintaxis : {{post.sintaxis}}</p>
+
+
+
+  <div class="row">
+    <div class="col-sm-4" ng-repeat="post in codigos">
+      <div class="thumbnail">
+        <img ng-src="{{post.profile_picture}}" class="img-rounded img" alt="" >
+       <div class="caption">
+         <h3>{{post.name}} </h3>
+         <p > {{post.titulo}}  Sintaxis: {{post.sintaxis}}</p>
+         <p><a  class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModal" ng-click="traerCodigo(post.id)">Copiar</a> <a href="#" class="btn btn-default" role="button" ng-click="verCodigo(post.id)">Ver</a></p>
+       </div>
+     </div>
     </div>
   </div>
+
+
+  <!-- Modal -->
+   <div class="modal fade" id="myModal" role="dialog" >
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Modal Header</h4>
+         </div>
+         <div class="modal-body" ng-repeat="code in codigoTexto">
+           <textarea style="width:100%; height:30em">
+             {{code.codigo}}
+           </textarea>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+
+     </div>
+   </div>

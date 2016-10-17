@@ -23,6 +23,12 @@ class EditorController extends Controller
     $get_code = DB::table('post-codigos')->where('id','=',$code_id)->get();
     return $get_code;
   }
+  public function getCodeText(){
+    session_start();
+    $code_id = Request::input('id');
+    $get_code = DB::table('post-codigos')->where('id','=',$code_id)->get();
+    return $get_code;
+  }
 
   public function post_comment(){
     session_start();

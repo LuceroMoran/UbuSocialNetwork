@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="sweetalert/sweetalert.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body>
+  <body ng-app="grupoapp" ng-controller="MainController">
     <header>
        <nav class="navbar navbar-fixed-top navbar-inverse">
          <div class="container-fluid">
@@ -66,36 +66,8 @@
          <div class="panel panel-default" ng-repeat="note in notas"><div class="panel-body"> <button type="button" class="close" ng-click="close(note.id)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>{{note.nota}}</div></div>
        </div>
      </div>
-     <div class="col-sm-7">
-       <div class="row">
-         <div class="col-sm-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>Título Código</h3>
-              <p>...</p>
-              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-            </div>
-          </div>
-         </div>
-         <div class="col-sm-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>Título Código</h3>
-              <p>...</p>
-              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-            </div>
-          </div>
-         </div>
-         <div class="col-sm-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>Título Código</h3>
-              <p>...</p>
-              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-            </div>
-          </div>
-         </div>
-       </div>
+     <div class="col-sm-7" ui-view="content">
+
      </div>
      <div class="col-sm-2 well">
        <div class="well">
@@ -103,10 +75,10 @@
        </div>
        <div class="well">
          <ul class="nav nav-pills nav-stacked">
-           <li><a href="#">Home</a></li>
-           <li><a href="#">Opción 1</a></li>
-           <li><a href="#">Opción 2</a></li>
-           <li><a href="#">Opción 3</a></li>
+           <li><a ui-sref="main">Home</a></li>
+           <li><a ui-sref="biblioteca">Biblioteca de Códigos</a></li>
+           <li><a href="#">Configuraciones</a></li>
+           <li><a href="#">Opción 4</a></li>
          </ul>
        </div>
      </div>
@@ -120,7 +92,7 @@
     <script src="js/jquery.js" charset="utf-8"></script>
     <script src="js/angular/angular.min.js"></script>
     <script src="js/angular/angular-ui-router.min.js"></script>
-    <script src="js/angular/modules/grupoapp.js"></script>
+    <script src="js/angular/modules/betagrupoapp.js"></script>
     <script src="sweetalert/sweetalert.min.js" ></script>
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
   </body>
