@@ -78,7 +78,7 @@
            <li><a ui-sref="main">Home</a></li>
            <li><a ui-sref="biblioteca">Biblioteca de Códigos</a></li>
            <li><a href="#">Configuraciones</a></li>
-           <li><a href="#">Opción 4</a></li>
+           <li><a ui-sref="codigo">Publicar código</a></li>
          </ul>
        </div>
      </div>
