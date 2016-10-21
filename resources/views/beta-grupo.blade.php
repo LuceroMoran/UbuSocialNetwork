@@ -63,7 +63,9 @@
                  <button type="submit" class="btn btn-large btn-warning " ng-click="sendnota()">Publicar</button>
        </div>
        <div class="nota2"  >
-         <div class="panel panel-default" ng-repeat="note in notas"><div class="panel-body"> <button type="button" class="close" ng-click="close(note.id)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>{{note.nota}}</div></div>
+         <div class="panel panel-default" ng-repeat="note in notas"><div class="panel-body">
+           <button type="button" class="close" ng-click="close(note.id)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>{{note.nota}}</div>
+         </div>
        </div>
      </div>
      <div class="col-sm-7" ui-view="content">
@@ -77,7 +79,7 @@
          <ul class="nav nav-pills nav-stacked">
            <li><a ui-sref="main">Home</a></li>
            <li><a ui-sref="biblioteca">Biblioteca de Códigos</a></li>
-           <li><a href="#">Configuraciones</a></li>
+           <li><a ui-sref="ajustes">Ajustes</a></li>
            <li><a ui-sref="codigo">Publicar código</a></li>
          </ul>
        </div>

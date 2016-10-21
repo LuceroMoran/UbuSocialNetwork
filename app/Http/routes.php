@@ -45,6 +45,7 @@ Route::post('group/nuevaNota','GroupsController@agregarNota');
 Route::post('group/eliminarNota','GroupsController@eliminarNota');
 Route::post('group/members','GroupsController@get_members');
 Route::post('group/new_member','GroupsController@addMember');
+Route::post('group/delete_member','GroupsController@deleteMember');
 Route::post('group/myGroups','GroupsController@get_myGroups');
 Route::post('group/postCode','GroupsController@postCode');
 Route::post('group/getCodes','GroupsController@getCodes');

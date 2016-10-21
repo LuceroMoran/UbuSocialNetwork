@@ -174,4 +174,10 @@ class GroupsController extends Controller
       }
     }
 
+    public function deleteMember(){
+      $id = Request::input('id');
+      $query = DB::table('groups_members')->where('member_id',$id)->delete();
+      return 0;
+    }
+
 }

@@ -33,6 +33,16 @@ grupoapp.config(function($stateProvider, $urlRouterProvider){
       }
     }
   })
+
+  .state('ajustes',{
+    url: '/ajustes',
+    views:{
+      'content' :{
+        templateUrl : 'templates/grupo-ajustes.html',
+        controller : 'MainController',
+      }
+    }
+  })
 });
 
 
@@ -55,6 +65,22 @@ grupoapp.controller('MainController',['$scope','$http',function($scope,$http){
    })
    .error(function(err){
      console.log("err");
+   })
+ }
+
+ $scope.redireccionar = function(email)
+ {
+   window.location = "/publicprofile="+email
+ }
+
+ $scope.eliminarMiembro = function(id)
+ {
+   $http.post('group/delete_member',{id:id})
+   .success(function(data){
+     swal("A sido eliminado")
+   })
+   .error(function(err){
+     swal(500)
    })
  }
  $scope.close = function(id){
@@ -88,6 +114,15 @@ $http.post('group/nuevaNota',$scope.mensaje)
       .error(function(err){
         console.log("err");
       })
+
+      $http.post('group/members',{})
+      .success(function(data){
+        // console.log(data);
+        $scope.miembrosDelGrupo = data
+      })
+      .error(function(data){
+        console.log("err");
+      })
     }, 800);
   }
 $scope.intervalo();
@@ -100,14 +135,7 @@ $scope.intervalo();
   .error(function(err){
     console.log("err");
   })
-  $http.post('group/members',{})
-  .success(function(data){
-    // console.log(data);
-    $scope.miembrosDelGrupo = data
-  })
-  .error(function(data){
-    console.log("err");
-  })
+
 }]);
 
 grupoapp.controller('PostController',['$scope','$http',function($scope,$http){
