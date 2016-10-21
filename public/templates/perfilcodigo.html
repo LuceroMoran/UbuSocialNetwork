@@ -1,43 +1,35 @@
+<div class="col-md-11">
+  <div class="form-group">
+    Título<input type="text" class="form-control" ng-model="codeInfo.titulo" >
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="form-group">
+    Seleccionar Sintaxis
+    <select class="form-control" cols="50" id="sel1" ng-model="codeInfo.sintaxis">
+      <option value="html">HTML</option>
+      <option value="javascript">JavaScript</option>
+      <option value="php">PHP</option>
+      <option value="css">CSS</option>
+      <option value="c">C</option>
+    </select>
+  </div>
+</div>
+<div class="col-md-11">
+  <div class="form-group">
+            <textarea name="post" placeholder="Pega tu código aquí" rows="12" class=" tArea form-control " ng-model="codeInfo.codigo" class="form-control"></textarea>
+  </div>
+</div>
+<div class="col-md-2">
+  <button ng-click="sendCode()" class="btn btn-large btn-warning" name="button">Publicar</button>
+</div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/perfilcodigo.css">
-</head>
-<body>
 
-    <div class="main container-fluid col-md-7 col-xs-12 col-sm-12">
-
-      <div class="media2">
-
-        <div class="media-body">
-        Titulo: <input type="text" class="titulo-input" ng-model="codeInfo.titulo" >
-        <textarea name="post" rows="6" cols="70" placeholder="Pega tu código aquí"  style="width: 40em; " class="codigo" ng-model="codeInfo.codigo" class="form-control"></textarea>
-        <br>
-        <div class="form-group">
-        <label>Seleccione Sintaxis</label>
-        <br>
-        <div class="container-fluid col-md-6">
-
-        <select class="form-control" cols="50" id="sel1" ng-model="codeInfo.sintaxis">
-          <option value="html">HTML</option>
-          <option value="javascript">JavaScript</option>
-          <option value="php">PHP</option>
-          <option value="css">CSS</option>
-          <option value="c">C</option>
-        </select>
-        </div>
-        <div class="row">
-        <button ng-click="sendCode()" class="btn btn-large btn-warning" name="button">Publicar</button>
-      </div>
-      </div>
-      </div>
-    </div>
-
-    </div>
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+<style>
+.tArea{
+  float:left;
+  width:100%;
+  outline:none;
+  resize:vertical;
+}
+</style>
