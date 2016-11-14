@@ -1,0 +1,128 @@
+html,body,.container-fluid
+{
+    height:100%;
+    background: #E0E1EF;
+}
+
+a{
+  cursor: pointer;
+}
+.container-fluid
+{
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 0 0; /*set left/right padding according to needs*/
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.row
+{
+    height: 100%;
+    display: table-row;
+}
+@media (min-width: 992px) {
+  .row .no-float {
+      display: table-cell;
+      float: none;
+  }
+}
+.col-md-3 {
+    padding-top: 40px;
+    background: #E0E1EF;
+}
+.col-md-6 {
+background: #ffffff;
+}
+
+.tArea{
+  float:left;
+  width:100%;
+  outline:none;
+  resize:vertical;
+}
+
+
+#editor {
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height:30em;
+    }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 10px solid transparent;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+  padding: 8px;
+  text-align: left;
+}
+
+.glyphicon-plus{
+  height: 15px;
+}
+
+.media{
+  border-bottom: 1px solid #999;
+  padding-bottom: 5px;
+}
+
+.botones{
+  left: 50px;
+  top: -20px;
+  z-index: 4;
+}
+
+.like{
+  width: 30px;
+  cursor: pointer;
+}
+
+.post-picture{
+  height: 70px;
+  background-color: #1F1C16;
+  border-radius: 10px;
+}
+
+.postmini-picture{
+  height: 40px;
+  background-color: #1F1C16;
+  border-radius: 10px;
+}
+
+#not{
+  background: #222222;
+  color: black;
+}
+
+#btntr{
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #eea236;
+}
+
+#btntr2{
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #eea236;
+}
+
+#editor {
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height:30em;
+    }

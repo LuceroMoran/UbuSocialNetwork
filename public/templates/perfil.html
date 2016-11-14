@@ -1,0 +1,48 @@
+<div  class="media1" id="box">
+  <div class="media-left" ng-repeat="info in myinfo">
+    <a href="#">
+      <img class="media-object img-rounded post-picture" ng-src="{{info.profile_picture}}" alt="..." >
+      <!-- <button ng-click="gotoSettings()">Settings</button> -->
+    </a>
+  </div>
+  <div class="media-body">
+    <!-- <h4 class="media-heading"></h4> -->
+  <textarea  class="ng-scope" ng-repeat="info in myinfo"  ng-model="posttosend.post" name="post" rows="4" cols="70" placeholder="¿Qué vas a compartir, {{info.name}}?"></textarea>
+  <button type="submit" class="btn btn-large btn-info" ng-click="send()">Publicar</button>
+</div>
+</div>
+<br><br>
+
+
+<div class="media" ng-repeat="code in postCode">
+      <div class="media-left" ng-click="viewCode(code.id)">
+        <a href="perfil.html">
+          <img ng-src="{{code.profile_picture}}" class="img-rounded post-picture" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading name-post"> {{code.name}} </h4>
+        <p id="post-code-body" ng-click="viewCode(code.id)">
+         Titulo: {{code.titulo}} , Sintaxis: {{code.sintaxis}}
+        </p>
+      </div>
+</div>
+
+<div id="zoom" class="box2" class="media" ng-repeat="new in publicaciones">
+        <div class="media-left">
+          <a href="perfil.html">
+            <img ng-src="{{new.profile_picture}}" class="img-rounded post-picture" alt="">
+          </a>
+		  <!-- <aside> <ul> <li> Códigos </li> </ul> </aside> -->
+        </div>
+        <div class="media-body" >
+          <h4 class="media-heading name-post"> {{new.name}}  <span ng-if="new.name != new.mname"> : {{new.mname}}</h4>
+          <p class="post-news">
+            {{new.text}}
+          </p>
+          <img src="Images/smile.svg" alt="Dale like" class="like" ng-model="addLike.pid" ng-click="sendlike(new.id)">
+          {{new.likes}}
+		  <!-- <a ui-sref="#" class="btn btn-xs btn-default disabled" target="_self">
+		  <span class="glyphicon glyphicon-pencil"></span> Comentar</a> -->
+        </div>
+  </div>

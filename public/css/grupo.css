@@ -1,0 +1,61 @@
+body {
+  padding-top: 60px;
+}
+
+.well {
+  background-color:#E0E1EF !important;
+}
+
+.breadcrumb {
+  background-color:#E0E1EF !important;
+}
+
+.nota {
+  padding-top: 120px;  
+}
+
+.main {
+  background: #fff;
+}
+
+.post{
+  background:#fff;
+}
+
+.nota2{
+  padding-top: 60px;
+}
+
+.jumbotron{
+  padding-bottom: 10px;
+  background-color:#E0E1EF !important;
+}
+.img{
+  width: 40px;
+  height: 40px;
+}
+/*
+.cover{
+  /*background: #64006A;*/
+  width: 320px;
+  height: 180px;
+}*/
+
+textarea{
+  resize: none;
+}
+
+.selected{
+  z-index: 310;
+  outline: none !important;
+  border:1px solid red;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.noselected{
+  z-index: -2;
+  opacity: 0.3;
+  transition: opacity .3s;
+}
+
+

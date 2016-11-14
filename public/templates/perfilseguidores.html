@@ -1,0 +1,12 @@
+<br>
+<div class="media" ng-repeat="followers in followersdata">
+    <div class="media-left">
+      <a href="perfil.html">
+        <img ng-src="{{followers.profile_picture}}" class="img-rounded post-picture" alt="">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4>{{followers.name}}</h4>
+      <button name="follow" class="btn btn-warning" ng-click="verperfil(followers.email)">Ver perfil</button>
+    </div>
+  </div>

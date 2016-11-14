@@ -1,0 +1,74 @@
+body {
+  padding-top: 60px;
+}
+.post-picture{
+  height: 70px;
+}
+
+.relacionados{
+  cursor: pointer;
+  color: rgb(45, 43, 32);
+}
+.nav{
+  padding-bottom: 5px;
+}
+aside{
+  background: #fff;
+}
+#related-code{
+  border-bottom: 1px solid #999;
+}
+textarea{
+  resize: none;
+  outline: none;
+  border: none;
+  font-size: 20px;
+}
+.row{
+  padding-bottom: 5px;
+  align-items: center;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+}
+.media{
+  padding-bottom: 5px;
+}
+#media-com{
+  border-top: 1px solid #999;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.media-heading{
+color: #337AB7;
+}
+pre.container{
+  background-color: #FF9933;
+  resize: none;
+}
+
+#code-layer{
+  color: #fff;
+  background: rgb(48, 29, 52);
+  margin: auto;
+  overflow-y: scroll;
+  width:820px;
+  height: 300px;
+  border:none;
+}
+
+.post-picture{
+  height: 5em;
+  width: 5em;
+}
+
+#recibeCodigo {display: none;}
+
+
+/*colores*/
+.sc {color: brown;}
+.keyword {color: rgb(153, 87, 209); font-weight: bold;}
+.string {color: rgb(194, 244, 52);}
+.comment {color: green; background: lightyellow;}
+.UsingcommentC{color: Magenta;}
+.customFunctions{color: Brown;}
+.numberColor{color: rgb(162, 69, 69);}

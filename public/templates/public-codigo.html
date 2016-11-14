@@ -1,0 +1,16 @@
+
+<br>
+      <div class="media" ng-repeat="code in postCode">
+            <div class="media-left">
+
+                <img ng-src="{{code.profile_picture}}" class="img-rounded post-picture" alt="">
+
+            </div>
+            <div class="media-body" >
+
+              <h4 class="media-heading name-post"> {{code.name}} </h4>
+              <a ng-click="viewCode(code.id)"><p id="post-code-body" >
+               Titulo: {{code.titulo}} , Sintaxis: {{code.sintaxis}}
+             </p> </a>
+            </div>
+          </div>

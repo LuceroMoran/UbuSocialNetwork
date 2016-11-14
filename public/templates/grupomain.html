@@ -1,0 +1,30 @@
+<div>
+<ol class="breadcrumb">
+  <li><a href="#" class="active">Home</a></li>
+</ol>
+  <br>
+
+  <textarea class="form-control" ng-model="publicacion.mensaje" rows="3" placeholder="¿Qué está tramando el equipo?"  id="publicarArea"></textarea> <br>
+  <div class="pull-right">
+            <button  class="btn btn-warning" ng-click="send()">Publicar</button>
+          </div>
+            <br> <br>
+  
+          <!-- Comentarios/publicaciones-->
+          <div id="publicaciones">
+            <div class="media post" ng-repeat="post in publicaciones">
+            <div class="media-left">
+              <a ng-href="/publicprofile={{post.email}}">
+                <img ng-src="{{post.profile_picture}}" class="img-rounded img" alt="" >
+              </a>  </div>
+            <div class="media-body">
+              <a ng-href="/publicprofile={{post.email}}">
+                <h5 class="media-heading">{{post.name}}  <span>   </span></h5>
+              </a>
+                <p> {{post.texto}} </p>
+              </div>
+            </div>
+          </div>
+          
+
+  </div>

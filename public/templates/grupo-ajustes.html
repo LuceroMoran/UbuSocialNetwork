@@ -1,0 +1,28 @@
+<ol class="breadcrumb">
+  <li><a href="#" >Home</a></li>
+  <li><a href="#" class="active">Ajustes</a></li>
+</ol>
+
+<div class="col-md-5">
+  <div class="panel panel-default" ng-repeat="member in miembrosDelGrupo" >
+    <ul class="list-group">
+      <!--Primer miembro -->
+        <li class="list-group-item">
+
+          <button type="button" class="close" ng-click="eliminarMiembro(member.id)" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <img ng-href="/publicprofile={{member.email}}" ng-src="{{member.profile_picture}}" class="img img-circle" alt="" ng-click="redireccionar(member.email)">
+          <p ng-click="redireccionar(member.email)">
+            <strong class="media-heading"> {{member.name}} </strong>
+          </p>
+
+        </a></li>
+    </ul>
+  </div>
+</div>
+<div class="col-md-7">
+  <p>
+    Añadir miembro
+  </p>
+ <input type="text"  class="input" placeholder="correo del nuevo miembro" ng-model="anadir.usuario">
+ <button  class="btn btn-success" ng-click="nuevo()">Añadir</button>
+</div>

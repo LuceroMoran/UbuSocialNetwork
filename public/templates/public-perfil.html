@@ -1,0 +1,41 @@
+<!--No mostrar proceso de carga--><!--Spotify Widget integration--><!--Codepad Widget-->
+    <br>
+
+         <div class="media1">
+          <div class="media-left" ng-repeat="info in myinfo">
+            <a href="/my_profile">
+              <img class="media-object img-rounded post-picture" ng-src="{{info.profile_picture}}" alt="..." >
+            </a>
+          </div>
+          <div class="media-body">
+          <textarea ng-repeat="info in myinfo"  ng-model="posttosend.post" name="post" rows="3" cols="80" placeholder="Publica algo a {{info.name}}" id="publicarArea"></textarea>
+          <br>
+          <button type="submit" class="btn btn-large btn-info" ng-click="send()">Publicar</button>
+        </div>
+      </div>
+      <br>
+
+
+       <div class="media" ng-repeat="new in publicaciones" id="publicaciones">
+               <div class="media-left">
+                 <a ng-href="/publicprofile={{new.email}}">
+                   <img ng-src="{{new.profile_picture}}" class="img-rounded post-picture" alt="">
+                 </a>
+               </div>
+               <div class="media-body" >
+                 <a ng-href="/publicprofile={{new.email}}"><h4 class="media-heading name-post"> {{new.name}}</a> <a ng-href="/publicprofile={{new.memail}}"><span ng-if="new.name != new.mname">: {{new.mname}}</h4></a>
+                 <p class="post-news">
+                   {{new.text}}
+                 </p>
+                 <img src="Images/smile.svg" alt="Dale like" class="like" ng-model="addLike.pid" ng-click="sendlike(new.id)">
+                 {{new.likes}}
+               </div>
+         </div>
+
+
+
+
+
+
+
+<br>
